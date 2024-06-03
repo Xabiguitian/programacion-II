@@ -1,0 +1,5 @@
+# ninja log v5
+0	397	1709570355777056595	CMakeFiles/test_lists.dir/static_list.c.o	ca7c356085e0e72e
+1	360	1709573890648261075	CMakeFiles/test_lists.dir/static_list.c.o	ca7c356085e0e72e
+1	42	1709573903173791213	CMakeFiles/main.dir/static_list.c.o	b1350a5b88a0b0ac
+1	322	1709632949291017038	CMakeFiles/main.dir/static_list.c.o	b1350a5b88a0b0ac

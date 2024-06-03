@@ -1,0 +1,7 @@
+# ninja log v5
+0	319	1706861026359306950	CMakeFiles/Rational_struct.dir/main.c.o	17ec10a976bdd687
+319	487	1706861026524817210	Rational_struct	5f1b70f1154e0da
+0	319	1706861026359301283	CMakeFiles/Rational_struct.dir/rational_struct.c.o	de56903e97c68785
+0	33	1706861351585311297	CMakeFiles/Rational_pointer.dir/main.c.o	477ad0321e875be8
+0	36	1706861396805596643	CMakeFiles/Rational_pointer.dir/rational_pointer.c.o	e04fd4d851cf9c83
+36	70	1706861396838801108	Rational_pointer	49a8c7c997c7a690

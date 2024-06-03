@@ -1,0 +1,4 @@
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Rational/cmake-build-debug/CMakeFiles/Rational_struct.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Rational/cmake-build-debug/CMakeFiles/Rational_pointer.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Rational/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Rational/cmake-build-debug/CMakeFiles/rebuild_cache.dir

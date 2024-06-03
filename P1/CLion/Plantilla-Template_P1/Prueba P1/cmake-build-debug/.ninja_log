@@ -1,0 +1,12 @@
+# ninja log v5
+180	298	1709987816036096603	/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/P1/CLion/Plantilla-Template_P1/Prueba P1/bin/test_lists	f258c13767a69b2e
+1	180	1709987815916197575	CMakeFiles/test_lists.dir/static_list.c.o	7c7120ffd19f7078
+0	179	1709987815916054410	CMakeFiles/test_lists.dir/test.c.o	2ab9088b79ac0360
+1	66	1709988348305740292	build.ninja	d31de96bae36d58c
+1	199	1710105234256356016	CMakeFiles/test_lists.dir/dynamic_list.c.o	bb5d12b92ff57cf2
+0	151	1710105283587001827	CMakeFiles/test_lists.dir/test.c.o	a75e394c12af4e1e
+1	150	1710105363481370941	CMakeFiles/test_lists.dir/test.c.o	a75e394c12af4e1e
+1	1917	1710417273764778388	CMakeFiles/test_lists.dir/dynamic_list.c.o	bb5d12b92ff57cf2
+1	38	1710417367361788981	CMakeFiles/main.dir/dynamic_list.c.o	39c94276d15dfd41
+1	45	1710417367368964471	CMakeFiles/main.dir/main.c.o	7b0f0202262a940e
+45	1149	1710417368472703420	/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/P1/CLion/Plantilla-Template_P1/Prueba P1/bin/main	7cbb165280d6981

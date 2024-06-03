@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Prueba",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Prueba::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Prueba-Debug-1d99d15f1c81679777dd.json",
+					"name" : "Prueba",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoru\u00f1a/Asignaturas 1\u00ba GEI/2 Cuatri/Programaci\u00f3n II/Pr\u00e1ctica/Prueba/cmake-build-debug",
+		"source" : "/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoru\u00f1a/Asignaturas 1\u00ba GEI/2 Cuatri/Programaci\u00f3n II/Pr\u00e1ctica/Prueba"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
