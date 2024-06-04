@@ -1,8 +1,0 @@
-# ninja log v5
-1	141	1709822522004213121	CMakeFiles/main.dir/main.c.o	126e1cb0dd9baaa9
-0	143	1709830787399273105	build.ninja	cab54fc4aeff70da
-0	148	1709822508801213173	CMakeFiles/test_song_list.dir/song_list.c.o	64e1722dbdff15cf
-1	75	1709822521938721002	CMakeFiles/main.dir/song_list.c.o	c3cc589a81a6c3ad
-1	76	1709822521938720627	CMakeFiles/main.dir/user_list.c.o	da79689406fb1fcb
-141	175	1709822522038003238	/Users/alejandro-romero/Downloads/P2_plantilla_CLion/P2/bin/main	6456cc429965949a
-0	26	1709822529663078310	CMakeFiles/test_user_list.dir/user_list.c.o	cc1176d3ef5b01e0
