@@ -22,120 +22,140 @@
 #include "static_list.h"
 #endif
 
-void New(char *param1, char *param2, tListU *list){
-    
+void New(char *param1, char *param2, tList *list){
+
+    tItemL newUser;
+    strcpy(newUser.userName, param1);
+    newUser.userCategory = (strcmp(param2, "basic") == 0) ? basic : pro;
+    newUser.numPlay = 0;
+
+
+    if (findItem(newUser.userName, *list) == LNULL) {
+         if (insertItem(newUser, list->numUsers, list)) {
+             printf("* New: user %s category %s\n", newUser.userName,
+             (newUser.userCategory == basic) ? "basic" : "pro");
+         } else {
+             printf("+ Error: New not possible\n");
+         }
+    }else {
+        printf("+ Error: New not possible\n");
+    }
+}
+
+void Delete (char *param1, tList *list){
+    if (isEmptyList(*list) == 0) {
+        tPosL pos = findItem(param1, *list);
+        if (pos != LNULL) {
+            tItemL deletedUser = getItem(pos, *list);
+            deleteAtPosition(pos, list);
+            printf("* Delete: user %s category %s numplays %d\n", deletedUser.userName,
+                (deletedUser.userCategory == basic) ? "basic" : "pro", deletedUser.numPlay);
+        } else {
+            printf("+ Error: Delete not possible\n");
+        }
+    } else {
+        printf("+ Error: Delete not possible\n");
+    }
+}
+
+void Upgrade(char *param1, tList *list){
+    if (isEmptyList(*list) == 0) {
+        tPosL upgradePos = findItem(param1, *list);
+        if (upgradePos != LNULL) {
+            tItemL userToUpgrade = getItem(upgradePos, *list);
+            if (userToUpgrade.userCategory == basic) {
+                userToUpgrade.userCategory = pro;
+                printf("* Upgrade: user %s category pro\n", userToUpgrade.userName);
+                updateItem(userToUpgrade, upgradePos, list);
+            } else {
+                printf("+ Error: Upgrade not possible\n");
+            }
+        } else {
+            printf("+ Error: Upgrade not possible\n");
+        }
+    } else {
+        printf("+ Error: Upgrade not possible\n");
+    }
+}
+
+void Play(char *param1, char *param2, tList *list){
+    if (isEmptyList(*list) == 0) {
+        tPosL playPos = LNULL;
+        playPos = findItem(param1, *list);
+        if (playPos != LNULL) {
+            tItemL userToPlay = getItem(playPos, *list);
+            userToPlay.numPlay++;
+            printf("* Play: user %s plays song %s numplays %d\n", userToPlay.userName, param2,
+                    userToPlay.numPlay);
+            updateItem(userToPlay, playPos, list);
+        } else {
+            printf("+ Error: Play not possible\n");
+        }
+    } else {
+        printf("+ Error: Play not possible\n");
+    }
+}
+
+void Stats (tList *list){
+    for (int i = 0; i < list->numUsers; i++) {
+        tItemL user = list->userList[i];
+        printf("User %s category %s numplays %d\n", user.userName,
+                (user.userCategory == basic) ? "basic" : "pro", user.numPlay);
+    }
+
+    printf("Category  Users  Plays  Average\n");
+    int basicUsers = 0, proUsers = 0, totalPlays_pro = 0, totalPlays_basic=0;
+    for (int i = 0; i < list->numUsers; i++) {
+        tItemL user = list->userList[i];
+        if (user.userCategory == basic) {
+            basicUsers++;
+            totalPlays_basic += user.numPlay;
+        } else {
+            proUsers++;
+            totalPlays_pro += user.numPlay;
+        }
+    }
+    float avgBasic = (basicUsers > 0) ? (float)totalPlays_basic / (float)basicUsers : 0;
+    float avgPro = (proUsers > 0) ? (float)totalPlays_pro / (float)proUsers : 0;
+    printf("Basic     %5d %6d %8.2f\n", basicUsers, totalPlays_basic, avgBasic);
+    printf("Pro       %5d %6d %8.2f\n", proUsers, totalPlays_pro, avgPro);
 }
 
 void processCommand(char *commandNumber, char command, char *param1, char *param2, tList *list) {
     switch (command) {
         case 'N':
+
             printf("********************\n");
             printf("%s %c: user %s category %s\n", commandNumber, command, param1,
                    (strcmp(param2, "") == 0) ? "" : (strcmp(param2, "basic") == 0) ? "basic" : "pro");
-
-            tItemL newUser;
-            strcpy(newUser.userName, param1);
-            newUser.userCategory = (strcmp(param2, "basic") == 0) ? basic : pro;
-            newUser.numPlay = 0;
-
-
-            if (findItem(newUser.userName, *list) == LNULL) {
-                if (insertItem(newUser, list->numUsers, list)) {
-                    printf("* New: user %s category %s\n", newUser.userName,
-                           (newUser.userCategory == basic) ? "basic" : "pro");
-                } else {
-                    printf("+ Error: New not possible\n");
-                }
-            }else {
-                printf("+ Error: New not possible\n");
-            }
+            New(param1, param2, list);
             break;
+
         case 'D':
+
             printf("********************\n");
             printf("%s %c: user %s\n", commandNumber, command, param1);
 
-            if (isEmptyList(*list) == 0) {
-                tPosL pos = findItem(param1, *list);
-                if (pos != LNULL) {
-                    tItemL deletedUser = getItem(pos, *list);
-                    deleteAtPosition(pos, list);
-                    printf("* Delete: user %s category %s numplays %d\n", deletedUser.userName,
-                           (deletedUser.userCategory == basic) ? "basic" : "pro", deletedUser.numPlay);
-                } else {
-                    printf("+ Error: Delete not possible\n");
-                }
-            } else {
-                printf("+ Error: Delete not possible\n");
-            }
+            Delete(param1, list);
             break;
+
         case 'U':
             printf("********************\n");
             printf("%s %c: user %s\n", commandNumber, command, param1);
 
-            if (isEmptyList(*list) == 0) {
-                tPosL upgradePos = findItem(param1, *list);
-                if (upgradePos != LNULL) {
-                    tItemL userToUpgrade = getItem(upgradePos, *list);
-                    if (userToUpgrade.userCategory == basic) {
-                        userToUpgrade.userCategory = pro;
-                        printf("* Upgrade: user %s category pro\n", userToUpgrade.userName);
-                        updateItem(userToUpgrade, upgradePos, list);
-                    } else {
-                        printf("+ Error: Upgrade not possible\n");
-                    }
-                } else {
-                    printf("+ Error: Upgrade not possible\n");
-                }
-            } else {
-                printf("+ Error: Upgrade not possible\n");
-            }
+            Upgrade(param1, list);
             break;
         case 'P':
             printf("********************\n");
             printf("%s %c: user %s song %s\n", commandNumber, command, param1, param2);
 
-            if (isEmptyList(*list) == 0) {
-                tPosL playPos = LNULL;
-                playPos = findItem(param1, *list);
-                if (playPos != LNULL) {
-                    tItemL userToPlay = getItem(playPos, *list);
-                    userToPlay.numPlay++;
-                    printf("* Play: user %s plays song %s numplays %d\n", userToPlay.userName, param2,
-                           userToPlay.numPlay);
-                    updateItem(userToPlay, playPos, list);
-                } else {
-                    printf("+ Error: Play not possible\n");
-                }
-            } else {
-                printf("+ Error: Play not possible\n");
-            }
+            Play(param1, param2, list);
             break;
         case 'S':
             printf("********************\n");
             printf("%s %c:\n", commandNumber, command);
 
-            for (int i = 0; i < list->numUsers; i++) {
-                tItemL user = list->userList[i];
-                printf("User %s category %s numplays %d\n", user.userName,
-                       (user.userCategory == basic) ? "basic" : "pro", user.numPlay);
-            }
-
-            printf("Category  Users  Plays  Average\n");
-            int basicUsers = 0, proUsers = 0, totalPlays_pro = 0, totalPlays_basic=0;
-            for (int i = 0; i < list->numUsers; i++) {
-                tItemL user = list->userList[i];
-                if (user.userCategory == basic) {
-                    basicUsers++;
-                    totalPlays_basic += user.numPlay;
-                } else {
-                    proUsers++;
-                    totalPlays_pro += user.numPlay;
-                }
-            }
-            float avgBasic = (basicUsers > 0) ? (float)totalPlays_basic / (float)basicUsers : 0;
-            float avgPro = (proUsers > 0) ? (float)totalPlays_pro / (float)proUsers : 0;
-            printf("Basic     %5d %6d %8.2f\n", basicUsers, totalPlays_basic, avgBasic);
-            printf("Pro       %5d %6d %8.2f\n", proUsers, totalPlays_pro, avgPro);
+            Stats(list);
             break;
         default:
             break;
