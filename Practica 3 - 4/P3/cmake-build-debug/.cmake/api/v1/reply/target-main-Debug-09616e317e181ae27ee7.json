@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoru\u00f1a/Asignaturas 1\u00ba GEI/2 Cuatri/Programaci\u00f3n II/Pr\u00e1ctica/Practica 1/Pr\u00e1ctica1/P1/bin/main"
+			"path" : "/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoru\u00f1a/Asignaturas 1\u00ba GEI/2 Cuatri/Programaci\u00f3n II/Pr\u00e1ctica/Practica 3 - 4/P3/bin/main"
 		}
 	],
 	"backtrace" : 1,
@@ -55,7 +55,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu99 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics"
+					"fragment" : "-g -std=gnu99 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fcolor-diagnostics"
 				},
 				{
 					"backtrace" : 2,
