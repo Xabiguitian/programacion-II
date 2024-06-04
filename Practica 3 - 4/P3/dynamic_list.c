@@ -19,6 +19,13 @@ bool isEmptyList(struct tList list) {
     return list.numUsers == 0; // Devuelve true si la lista está vacía
 }
 
+bool createNode(tPosL *pos) {
+
+    *pos = malloc(sizeof(struct Node));
+
+    return *pos != LNULL;
+}
+
 tPosL findItem(tUserName username, tList list) {
     for (int i = 0; i < list.numUsers; i++) {
         if (strcmp(list.userList[i].userName, username) == 0) {
