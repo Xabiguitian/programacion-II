@@ -31,7 +31,7 @@ void New(char *param1, char *param2, tList *list){
 
 
     if (findItem(newUser.userName, *list) == LNULL) {
-         if (insertItem(newUser, list->numUsers, list)) {
+         if (insertItem(newUser, list)) {
              printf("* New: user %s category %s\n", newUser.userName,
              (newUser.userCategory == basic) ? "basic" : "pro");
          } else {

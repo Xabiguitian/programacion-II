@@ -13,7 +13,7 @@
 #include "types.h"
 
 void createEmptyList(tList *list);
-bool insertItem(tItemL item, tPosL pos, tList *list);
+bool insertItem(tItemL item, tList *list);
 void deleteAtPosition(tPosL pos, tList *list);
 struct tItemL getItem(tPosL pos, tList list);
 void updateItem(tItemL item, tPosL pos, tList *list);
