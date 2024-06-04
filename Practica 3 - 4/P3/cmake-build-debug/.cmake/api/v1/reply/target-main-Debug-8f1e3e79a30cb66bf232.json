@@ -74,7 +74,7 @@
 				},
 				{
 					"backtrace" : 4,
-					"define" : "INPUT_FILE=\"play.txt\""
+					"define" : "INPUT_FILE=\"new.txt\""
 				}
 			],
 			"language" : "C",
