@@ -12,6 +12,13 @@
 
 #include "types.h"
 
+typedef struct tNode* tUserPos;
+
+typedef struct tNode{
+    tItemL data;
+    tPosL next;
+} tNode;
+
 void createEmptyList(tList *list);
 bool createNode(tPosL *pos);
 bool insertItem(tItemL item, tList *list);

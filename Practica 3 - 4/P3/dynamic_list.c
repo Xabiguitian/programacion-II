@@ -9,6 +9,7 @@
 #include "types.h"
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 
 void createEmptyList(tList *list) {
