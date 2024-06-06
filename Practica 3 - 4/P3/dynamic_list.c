@@ -11,6 +11,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 
 void createEmptyList(tList *list) {
@@ -30,6 +31,14 @@ bool createNode(tPosL *pos) {
     return *pos != LNULL;
 }
 
+tPosL numUsers(tList list){
+    tPosL count = 0;
+    for (tPosL pos = list; pos != LNULL; pos = pos->next) {
+        count++;
+    }
+    return count;
+}
+
 tPosL findItem(tUserName username, tList list) {
     if (isEmptyList(list)){
         return LNULL;
@@ -44,109 +53,107 @@ tPosL findItem(tUserName username, tList list) {
     }
 }
 
-bool insertItem(tItemL item, tList *list) {
-    // Verifica si la lista está llena
-    if (list->numUsers >= MAX_USERS) {
-        // La lista está llena, no se puede insertar más usuarios
-        return false;
-    }
-
-    // Verifica si el usuario ya existe en la lista
-    if (findItem(item.userName, *list) == LNULL) {
-        // El usuario no existe en la lista
-
-        // Si la lista está vacía, inserta el usuario en la primera posición
-        if (list->numUsers == 0) {
-            list->userList[0] = item;
-            list->numUsers++;
-            return true;
-        } else {
-            // La lista no está vacía, busca la posición correcta para insertar el usuario
-
-            for (int i = 0; i < list->numUsers; i++) {
-                // Compara los nombres de usuario para encontrar la posición correcta
-                if (strcmp(item.userName, list->userList[i].userName) == 0) {
-                    // El nombre de usuario ya existe en la lista, no se puede insertar
-                    return false;
-                } else if (strcmp(item.userName, list->userList[i].userName) < 0) {
-                    // Se encontró la posición correcta para insertar el usuario
-
-                    // Desplaza los usuarios a la derecha para hacer espacio para el nuevo usuario
-                    for (int j = list->numUsers; j >= i; j--) {
-                        list->userList[j] = list->userList[j - 1];
-                    }
-
-                    // Inserta el nuevo usuario en la posición correcta
-                    list->userList[i] = item;
-                    list->numUsers++;
-                    return true;
-                }
-            }
-
-            // Si no se encontró la posición correcta, inserta el usuario al final de la lista
-            list->userList[list->numUsers] = item;
-            list->numUsers++;
-            return true;
-        }
-    } else {
-        // El usuario ya existe en la lista, no se puede insertar
-        return false;
-    }
+tItemL getItem(tPosL pos, tList list) {
+    return pos->data;
 }
 
-void deleteAtPosition(tPosL pos,tList *list) {
-    if (isEmptyList(*list)) {
-        // Lista vacía, no se puede eliminar
-        return;
-    }
-
-    if (pos < 0 || pos >= list->numUsers) {
-        // Posición inválida
-        return;
-    }
-
-    // Desplazar los elementos hacia atrás para eliminar el elemento en la posición indicada
-    for (int i = pos; i < list->numUsers - 1; i++) {
-        list->userList[i] = list->userList[i + 1];
-    }
-
-    list->numUsers--; // Decrementar el número de usuarios
+void updateItem(tItemL item, tPosL pos, tList *list) {
+    pos->data = item;
 }
 
-tItemL getItem(tPosL pos,struct tList list) {
-    return list.userList[pos];
-}
-
-void updateItem(tItemL item, tPosL pos,struct tList *list) {
-    list->userList[pos] = item;
-}
-
-
-
-tPosL first(struct tList list) {
-    if (isEmptyList(list)) {
+tPosL first(tList list) {
+    if (isEmptyList(list) == true) {
         return LNULL; // Lista vacía
     }
     return 0; // Primera posición
 }
 
-tPosL last(struct tList list) {
+tPosL last(tList list) {
     if (isEmptyList(list)) {
         return LNULL; // Lista vacía
     }
-    return list.numUsers - 1; // Última posición
+
+    return numUsers(list); // Última posición
 }
 
 tPosL next(tPosL pos,tList list) {
-    if (pos < 0 || pos >= list.numUsers - 1) {
-        return LNULL; // Posición inválida o última posición
-    }
-    return pos + 1; // Siguiente posición
+    return pos->next; // Siguiente posición
 }
 
 tPosL previous(tPosL pos,tList list) {
-    if (pos <= 0 || pos >= list.numUsers) {
-        return LNULL; // Posición inválida o primera posición
+    if (pos == list){
+        return LNULL;
+    }else{
+        tPosL posPrev;
+        for (posPrev = list; posPrev->next != pos; posPrev = posPrev->next);
+        return posPrev; // Posición anterior
     }
-    return pos - 1; // Posición anterior
+}
+
+bool insertItem(tItemL item, tList *list) {
+
+    if (numUsers(*list) >= MAX_USERS) return false;
+    if (isEmptyList(*list) == true) return false;
+
+    tPosL posInsert,pos;
+
+    if (!createNode(&pos)) return false;
+    pos = *list;
+
+    if (!createNode(&posInsert)) return false;
+    posInsert->data = item;
+
+    if (isEmptyList(*list)) {
+
+        *list = posInsert;
+        return true;
+    }
+
+    int count=0;
+    for (int i = 0; i < numUsers(*list); i++) {
+        if(strcmp(item.userName,pos->data.userName) < 0 ){
+
+            pos = pos->next;
+            count++;
+
+        }else{
+            for (int i = count; i < numUsers(*list); i++){
+                pos->next = pos;
+            }
+            *list = pos;
+            for (int i = count; i >= 0; i--){
+                *list = (*list)->next;
+            }
+            *list = (*list)->next;
+            (*list)->data = item;
+        }
+    }
+
+    return true;
+}
+
+void deleteAtPosition(tPosL pos,tList *list) {
+    if (isEmptyList(*list)) return;// Lista vacía, no se puede eliminar
+
+    if (pos < 0 || pos >= numUsers(*list)) return; // Posición inválida
+
+    if (numUsers(*list) == 1) {
+        *list = LNULL;
+        return;
+    }
+
+    if (next(pos, *list) == LNULL) {
+        previous(pos, *list)->next = LNULL;
+        return;
+    }
+
+
+    for (tPosL i = 0; i < pos; i++){
+        *list = (*list)->next;
+    }
+
+    // Desplazar los elementos hacia atrás para eliminar el elemento en la posición indicada
+    for (tPosL i = numUsers(*list)-1; i > pos; i++) {
+        previous(pos, *list) = *list;
+    }
 }
