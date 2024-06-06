@@ -7,38 +7,44 @@
  * DATE: 08 / 03 / 24
  */
 #include "types.h"
+#include "dynamic_list.h"
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
 
 void createEmptyList(tList *list) {
-    list->numUsers = 0; // Inicializa el número de usuarios en 0
+
+    *list = LNULL;
 }
 
-bool isEmptyList(struct tList list) {
-    return list.numUsers == 0; // Devuelve true si la lista está vacía
+bool isEmptyList(tList list) {
+
+    return list == LNULL; // Devuelve true si la lista está vacía
 }
 
 bool createNode(tPosL *pos) {
 
-    *pos = malloc(sizeof(struct Node));
+    *pos = malloc(sizeof(struct tNode));
 
     return *pos != LNULL;
 }
 
 tPosL findItem(tUserName username, tList list) {
-    for (int i = 0; i < list.numUsers; i++) {
-        if (strcmp(list.userList[i].userName, username) == 0) {
-            return i; // Se encontró el usuario, devuelve la posición
-        }else if(strcmp(list.userList[i].userName, username) > 0){
-            return LNULL; // Devuelve nulo si ya se pasó la posición en la que debería estar el usuario (así no sigue buscando en la lista y optimizamos el código)
+    if (isEmptyList(list)){
+        return LNULL;
+    }else {
+
+        for (tPosL pos = list; pos != LNULL; pos = pos->next) {
+            if (pos->data.userName == username){
+                return pos;
+            }
         }
+        return LNULL; // No se encontró el usuario, devuelve LNULL
     }
-    return LNULL; // No se encontró el usuario, devuelve LNULL
 }
 
-bool insertItem(struct tItemL item, tList *list) {
+bool insertItem(tItemL item, tList *list) {
     // Verifica si la lista está llena
     if (list->numUsers >= MAX_USERS) {
         // La lista está llena, no se puede insertar más usuarios

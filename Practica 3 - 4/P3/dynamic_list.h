@@ -12,14 +12,19 @@
 
 #include "types.h"
 
-typedef struct tNode* tUserPos;
+#define LNULL NULL
+
+typedef struct tNode *tPosL;
 
 typedef struct tNode{
     tItemL data;
     tPosL next;
 } tNode;
 
+typedef tPosL tList;
+
 void createEmptyList(tList *list);
+bool isEmptyList(tList list);
 bool createNode(tPosL *pos);
 bool insertItem(tItemL item, tList *list);
 void deleteAtPosition(tPosL pos, tList *list);
@@ -30,6 +35,5 @@ tPosL first(struct tList list);
 tPosL last(struct tList list);
 tPosL next(tPosL pos, tList list);
 tPosL previous(tPosL pos, tList list);
-bool isEmptyList(struct tList list);
 
 #endif
