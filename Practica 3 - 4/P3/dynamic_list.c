@@ -149,7 +149,6 @@ tList deleteAtPosition(tPosL pos,tList *list) {
         q = pos->next;
         pos->data = q->data;
         pos->next = q->next;
-        pos = q;
         return *list;
     }
 }
