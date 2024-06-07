@@ -7,132 +7,148 @@
  * DATE: 08 / 03 / 24
  */
 #include "types.h"
+#include "dynamic_list.h"
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 
-void createEmptyList(tList *list) {
-    list->numUsers = 0; // Inicializa el número de usuarios en 0
+tList createEmptyList(tList *list) {
+
+    *list = LNULL;
+    return *list;
 }
 
-bool isEmptyList(struct tList list) {
-    return list.numUsers == 0; // Devuelve true si la lista está vacía
+bool isEmptyList(tList list) {
+
+    return list == LNULL; // Devuelve true si la lista está vacía
+}
+
+bool createNode(tPosL *pos) {
+
+    *pos = malloc(sizeof(struct tNode));
+
+    return *pos != LNULL;
+}
+
+int numUsers(tList list){
+    int count = 0;
+    for (tPosL pos = list; pos != LNULL; pos = pos->next) {
+        count++;
+    }
+    return count;
 }
 
 tPosL findItem(tUserName username, tList list) {
-    for (int i = 0; i < list.numUsers; i++) {
-        if (strcmp(list.userList[i].userName, username) == 0) {
-            return i; // Se encontró el usuario, devuelve la posición
-        }else if(strcmp(list.userList[i].userName, username) > 0){
-            return LNULL; // Devuelve nulo si ya se pasó la posición en la que debería estar el usuario (así no sigue buscando en la lista y optimizamos el código)
-        }
-    }
-    return LNULL; // No se encontró el usuario, devuelve LNULL
-}
+    if (isEmptyList(list)){
+        return LNULL;
+    }else {
 
-bool insertItem(struct tItemL item, tList *list) {
-    // Verifica si la lista está llena
-    if (list->numUsers >= MAX_USERS) {
-        // La lista está llena, no se puede insertar más usuarios
-        return false;
-    }
-
-    // Verifica si el usuario ya existe en la lista
-    if (findItem(item.userName, *list) == LNULL) {
-        // El usuario no existe en la lista
-
-        // Si la lista está vacía, inserta el usuario en la primera posición
-        if (list->numUsers == 0) {
-            list->userList[0] = item;
-            list->numUsers++;
-            return true;
-        } else {
-            // La lista no está vacía, busca la posición correcta para insertar el usuario
-
-            for (int i = 0; i < list->numUsers; i++) {
-                // Compara los nombres de usuario para encontrar la posición correcta
-                if (strcmp(item.userName, list->userList[i].userName) == 0) {
-                    // El nombre de usuario ya existe en la lista, no se puede insertar
-                    return false;
-                } else if (strcmp(item.userName, list->userList[i].userName) < 0) {
-                    // Se encontró la posición correcta para insertar el usuario
-
-                    // Desplaza los usuarios a la derecha para hacer espacio para el nuevo usuario
-                    for (int j = list->numUsers; j >= i; j--) {
-                        list->userList[j] = list->userList[j - 1];
-                    }
-
-                    // Inserta el nuevo usuario en la posición correcta
-                    list->userList[i] = item;
-                    list->numUsers++;
-                    return true;
-                }
+        for (tPosL pos = list; pos != LNULL; pos = pos->next) {
+            if (pos->data.userName == username){
+                return pos;
             }
-
-            // Si no se encontró la posición correcta, inserta el usuario al final de la lista
-            list->userList[list->numUsers] = item;
-            list->numUsers++;
-            return true;
         }
-    } else {
-        // El usuario ya existe en la lista, no se puede insertar
-        return false;
+        return LNULL; // No se encontró el usuario, devuelve LNULL
     }
 }
 
-void deleteAtPosition(tPosL pos,tList *list) {
-    if (isEmptyList(*list)) {
-        // Lista vacía, no se puede eliminar
-        return;
-    }
-
-    if (pos < 0 || pos >= list->numUsers) {
-        // Posición inválida
-        return;
-    }
-
-    // Desplazar los elementos hacia atrás para eliminar el elemento en la posición indicada
-    for (int i = pos; i < list->numUsers - 1; i++) {
-        list->userList[i] = list->userList[i + 1];
-    }
-
-    list->numUsers--; // Decrementar el número de usuarios
+tItemL getItem(tPosL pos, tList list) {
+    return pos->data;
 }
 
-tItemL getItem(tPosL pos,struct tList list) {
-    return list.userList[pos];
+tList updateItem(tItemL item, tPosL pos, tList *list) {
+    pos->data = item;
+    return *list;
 }
 
-void updateItem(tItemL item, tPosL pos,struct tList *list) {
-    list->userList[pos] = item;
+tPosL first(tList list) {
+    if (isEmptyList(list) == true) {
+        return LNULL; // Lista vacía
+    }
+    return list; // Primera posición
 }
 
-
-
-tPosL first(struct tList list) {
+tPosL last(tList list) {
     if (isEmptyList(list)) {
         return LNULL; // Lista vacía
     }
-    return 0; // Primera posición
-}
 
-tPosL last(struct tList list) {
-    if (isEmptyList(list)) {
-        return LNULL; // Lista vacía
-    }
-    return list.numUsers - 1; // Última posición
+    tPosL pos;
+    for (pos = list; pos->next != LNULL; pos = pos->next);
+
+    return pos; // Última posición
 }
 
 tPosL next(tPosL pos,tList list) {
-    if (pos < 0 || pos >= list.numUsers - 1) {
-        return LNULL; // Posición inválida o última posición
-    }
-    return pos + 1; // Siguiente posición
+    return (pos->next == LNULL)? LNULL : pos->next; // Siguiente posición a no la indicada ya sea la última, en ese caso devolvería LNULL
 }
 
 tPosL previous(tPosL pos,tList list) {
-    if (pos <= 0 || pos >= list.numUsers) {
-        return LNULL; // Posición inválida o primera posición
+    if (pos == list){
+        return LNULL;
+    }else{
+        tPosL posPrev;
+        for (posPrev = list; posPrev->next != pos; posPrev = posPrev->next);
+        return posPrev; // Posición anterior
     }
-    return pos - 1; // Posición anterior
+}
+
+bool insertItem(tItemL item, tList *list) {
+
+    if (numUsers(*list) >= MAX_USERS) return false;
+
+    tPosL posInsert,pos;
+
+    if (!createNode(&pos)) return false;
+    pos = *list;
+
+    if (!createNode(&posInsert)) return false;
+    posInsert->data = item;
+
+    if (isEmptyList(*list) == true) {
+
+        *list = posInsert;
+        (*list)->next = LNULL;
+        return true;
+    }
+
+    int count=0;
+    for (int i = 0; i < numUsers(*list); i++) {
+        if(strcmp(item.userName,pos->data.userName) > 0 ){
+
+            pos = pos->next;
+            count++;
+
+        }else{
+
+            pos->next = pos;
+            pos->data = item;
+
+        }
+    }
+
+    return true;
+}
+
+tList deleteAtPosition(tPosL pos,tList *list) {
+
+    if (isEmptyList(*list)) return *list;// Lista vacía, no se puede eliminar
+
+    if (findItem(pos->data.userName, *list) == LNULL) {
+        return *list; // Posición inválida
+    }else if (pos == *list) {
+        *list = pos->next;
+        return *list;
+    } else if (pos->next == LNULL) {
+        previous(pos, *list)->next = LNULL;
+        free(pos);
+        return *list;
+    }else{
+        tPosL q;
+        q = pos->next;
+        pos->data = q->data;
+        pos->next = q->next;
+        return *list;
+    }
 }
