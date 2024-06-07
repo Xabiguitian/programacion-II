@@ -23,13 +23,13 @@ typedef struct tNode{
 
 typedef tPosL tList;
 
-tList createEmptyList(tList *list);
+void createEmptyList(tList *list);
 bool isEmptyList(tList list);
 bool createNode(tPosL *pos);
 bool insertItem(tItemL item, tList *list);
-tList deleteAtPosition(tPosL pos, tList *list);
+void deleteAtPosition(tPosL pos, tList *list);
 tItemL getItem(tPosL pos, tList list);
-tList updateItem(tItemL item, tPosL pos, tList *list);
+void updateItem(tItemL item, tPosL pos, tList *list);
 tPosL findItem(tUserName username, tList list);
 tPosL first(tList list);
 tPosL last(tList list);

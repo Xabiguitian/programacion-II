@@ -13,10 +13,10 @@
 #include <stdlib.h>
 
 
-tList createEmptyList(tList *list) {
+void createEmptyList(tList *list) {
 
     *list = LNULL;
-    return *list;
+    return;
 }
 
 bool isEmptyList(tList list) {
@@ -57,9 +57,9 @@ tItemL getItem(tPosL pos, tList list) {
     return pos->data;
 }
 
-tList updateItem(tItemL item, tPosL pos, tList *list) {
+void updateItem(tItemL item, tPosL pos, tList *list) {
     pos->data = item;
-    return *list;
+    return;
 }
 
 tPosL first(tList list) {
@@ -113,12 +113,10 @@ bool insertItem(tItemL item, tList *list) {
         return true;
     }
 
-    int count=0;
     for (int i = 0; i < numUsers(*list); i++) {
         if(strcmp(item.userName,pos->data.userName) > 0 ){
 
             pos = pos->next;
-            count++;
 
         }else{
 
@@ -131,24 +129,24 @@ bool insertItem(tItemL item, tList *list) {
     return true;
 }
 
-tList deleteAtPosition(tPosL pos,tList *list) {
+void deleteAtPosition(tPosL pos,tList *list) {
 
-    if (isEmptyList(*list)) return *list;// Lista vacía, no se puede eliminar
+    if (isEmptyList(*list)) return;// Lista vacía, no se puede eliminar
 
     if (findItem(pos->data.userName, *list) == LNULL) {
-        return *list; // Posición inválida
+        return; // Posición inválida
     }else if (pos == *list) {
         *list = pos->next;
-        return *list;
+        return;
     } else if (pos->next == LNULL) {
         previous(pos, *list)->next = LNULL;
         free(pos);
-        return *list;
+        return;
     }else{
         tPosL q;
         q = pos->next;
         pos->data = q->data;
         pos->next = q->next;
-        return *list;
+        return;
     }
 }
