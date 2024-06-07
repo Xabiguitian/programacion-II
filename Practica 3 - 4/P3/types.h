@@ -5,11 +5,8 @@
 
 #define MAX_USERS 25
 
-#define LNULL (-1)
-
 #include <stdbool.h>
 
-typedef int tPosL; // Posición en la lista
 
 typedef char tUserName[NAME_LENGTH_LIMIT]; //Nombre de usuario
 typedef char tSongTitle[NAME_LENGTH_LIMIT]; //Titulo de la canción
@@ -27,9 +24,5 @@ typedef struct tSong { // Estructura para una canción
     tSongTitle songTitle; // Título de la canción
 } tSong;
 
-typedef struct tList { // estructura para la lista de usuarios
-    tItemL userList[MAX_USERS]; // Array de elementos de usuario
-    int numUsers; // Numero actual de usuarios en la lista
-} tList;
 
 #endif

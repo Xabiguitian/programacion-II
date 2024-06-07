@@ -171,8 +171,7 @@ void readTasks(char *filename) {
     f = fopen(filename, "r");
 
     if (f != NULL) {
-        tList list;
-        createEmptyList(&list);
+
 
         while (fgets(buffer, MAX_BUFFER, f)) {
             commandNumber = strtok(buffer, delimiters);
@@ -191,6 +190,9 @@ void readTasks(char *filename) {
 }
 
 int main(int nargs, char **args) {
+    tList list;
+    createEmptyList(&list);
+
     char *file_name = "new.txt";
 
     if (nargs > 1) {
