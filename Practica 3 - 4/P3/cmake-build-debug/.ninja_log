@@ -1,5 +1,12 @@
 # ninja log v5
-0	79	1717537897111014380	build.ninja	ee5374528fbea36f
-1	202	1717535380405225462	CMakeFiles/main.dir/main.c.o	95fe0732027b54f7
-205	326	1717536170500058463	/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruÃ±a/Asignaturas 1Âº GEI/2 Cuatri/ProgramaciÃ³n II/PrÃ¡ctica/Practica 3 - 4/P3/bin/main	a23f247f2fe7b3d5
-2	205	1717536170382234813	CMakeFiles/main.dir/dynamic_list.c.o	36a04a545edd3767
+0	79	7397953243324272	build.ninja	ee5374528fbea36f
+38	319	7397960503301193	CMakeFiles/main.dir/dynamic_list.c.obj	594c79a7f8d7fc81
+30	212	7397970027057684	CMakeFiles/main.dir/main.c.obj	b1a544076ee9f729
+2	216	7397970027077739	CMakeFiles/main.dir/dynamic_list.c.obj	594c79a7f8d7fc81
+216	519	7397970030071276	C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4/P3/bin/main.exe	b4c4e0a0eec3338e
+3	249	7397970870132391	CMakeFiles/main.dir/main.c.obj	b1a544076ee9f729
+250	502	7397970872557430	C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4/P3/bin/main.exe	b4c4e0a0eec3338e
+2	196	7397971921153137	CMakeFiles/main.dir/main.c.obj	b1a544076ee9f729
+197	403	7397971923151440	C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4/P3/bin/main.exe	b4c4e0a0eec3338e
+2	212	7397974192883030	CMakeFiles/main.dir/dynamic_list.c.obj	594c79a7f8d7fc81
+214	412	7397974194841000	C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4/P3/bin/main.exe	b4c4e0a0eec3338e

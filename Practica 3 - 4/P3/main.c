@@ -31,7 +31,7 @@ void New(char *param1, char *param2, tList *list){
 
 
     if (findItem(newUser.userName, *list) == LNULL) {
-         if (insertItem(newUser, list)) {
+         if (insertItem(newUser, list) == true) {
              printf("* New: user %s category %s\n", newUser.userName,
              (newUser.userCategory == basic) ? "basic" : "pro");
          } else {
@@ -97,24 +97,23 @@ void Play(char *param1, char *param2, tList *list){
 }
 
 void Stats (tList *list){
-    for (int i = 0; i < list->numUsers; i++) {
-        tItemL user = list->userList[i];
-        printf("User %s category %s numplays %d\n", user.userName,
-                (user.userCategory == basic) ? "basic" : "pro", user.numPlay);
+    int basicUsers = 0, proUsers = 0, totalPlays_pro = 0, totalPlays_basic=0;
+    for (int i = 0; i < numUsers(*list); i++) {
+        printf("User %s category %s numplays %d\n", (*list)->data.userName,
+                ((*list)->data.userCategory == basic) ? "basic" : "pro", (*list)->data.numPlay);
+
+        if ((*list)->data.userCategory == basic) {
+            basicUsers++;
+            totalPlays_basic += (*list)->data.numPlay;
+        } else {
+            proUsers++;
+            totalPlays_pro += (*list)->data.numPlay;
+        }
+
+        (*list) = (*list)->next;
     }
 
     printf("Category  Users  Plays  Average\n");
-    int basicUsers = 0, proUsers = 0, totalPlays_pro = 0, totalPlays_basic=0;
-    for (int i = 0; i < list->numUsers; i++) {
-        tItemL user = list->userList[i];
-        if (user.userCategory == basic) {
-            basicUsers++;
-            totalPlays_basic += user.numPlay;
-        } else {
-            proUsers++;
-            totalPlays_pro += user.numPlay;
-        }
-    }
     float avgBasic = (basicUsers > 0) ? (float)totalPlays_basic / (float)basicUsers : 0;
     float avgPro = (proUsers > 0) ? (float)totalPlays_pro / (float)proUsers : 0;
     printf("Basic     %5d %6d %8.2f\n", basicUsers, totalPlays_basic, avgBasic);
@@ -162,7 +161,7 @@ void processCommand(char *commandNumber, char command, char *param1, char *param
     }
 }
 
-void readTasks(char *filename) {
+void readTasks(char *filename, tList *list) {
     FILE *f = NULL;
     char *commandNumber, *command, *param1, *param2;
     const char delimiters[] = " \n\r";
@@ -179,7 +178,7 @@ void readTasks(char *filename) {
             param1 = strtok(NULL, delimiters);
             param2 = strtok(NULL, delimiters);
 
-            processCommand(commandNumber, command[0], param1, param2, &list);
+            processCommand(commandNumber, command[0], param1, param2, list);
         }
 
         fclose(f);
@@ -203,7 +202,7 @@ int main(int nargs, char **args) {
 #endif
     }
 
-    readTasks(file_name);
+    readTasks(file_name, &list);
 
     return 0;
 }

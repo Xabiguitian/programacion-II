@@ -98,7 +98,7 @@ bool insertItem(tItemL item, tList *list) {
 
     if (numUsers(*list) >= MAX_USERS) return false;
 
-    tPosL posInsert,pos;
+    tPosL posInsert, pos;
 
     if (!createNode(&pos)) return false;
     pos = *list;
