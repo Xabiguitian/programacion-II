@@ -11,6 +11,16 @@
 #define STATIC_LIST_H
 
 #include "types.h"
+#include <stdbool.h>
+
+#define MAX 25
+#define LNULL -1
+
+typedef int tPosL;
+typedef struct {
+    tItemL data[MAX];
+    tPosL lastPos;
+} tList;
 
 
 tList createEmptyList();

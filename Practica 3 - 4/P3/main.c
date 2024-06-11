@@ -31,7 +31,7 @@ void New(char *param1, char *param2, tList *list){
 
 
     if (findItem(newUser.userName, *list) == LNULL) {
-         if (insertItem(newUser, list) == true) {
+         if (insertItem(newUser,LNULL, list) == true) {
              printf("* New: user %s category %s\n", newUser.userName,
              (newUser.userCategory == basic) ? "basic" : "pro");
          } else {
@@ -98,19 +98,18 @@ void Play(char *param1, char *param2, tList *list){
 
 void Stats (tList *list){
     int basicUsers = 0, proUsers = 0, totalPlays_pro = 0, totalPlays_basic=0;
-    for (int i = 0; i < numUsers(*list); i++) {
-        printf("User %s category %s numplays %d\n", (*list)->data.userName,
-                ((*list)->data.userCategory == basic) ? "basic" : "pro", (*list)->data.numPlay);
+    for (tPosL pos = *list; pos != LNULL; pos = pos->next) {
+        printf("User %s category %s numplays %d\n", pos->data.userName,
+                (pos->data.userCategory == basic) ? "basic" : "pro", pos->data.numPlay);
 
-        if ((*list)->data.userCategory == basic) {
+        if (pos->data.userCategory == basic) {
             basicUsers++;
-            totalPlays_basic += (*list)->data.numPlay;
+            totalPlays_basic += pos->data.numPlay;
         } else {
             proUsers++;
-            totalPlays_pro += (*list)->data.numPlay;
+            totalPlays_pro += pos->data.numPlay;
         }
 
-        (*list) = (*list)->next;
     }
 
     printf("Category  Users  Plays  Average\n");
