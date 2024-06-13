@@ -1,6 +1,2 @@
 # ninja log v5
-2	375	1718101662641330529	build.ninja	ed2235f123f7531a
-0	57	1718099264543885676	CMakeFiles/main.dir/main.c.o	6fd3dde39e5b2283
-0	56	1718099264542944458	CMakeFiles/main.dir/dynamic_list.c.o	e776993a39cea30
-57	92	1718099264579110496	/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 3 - 4/P3/bin/main	a23f247f2fe7b3d5
-1	87	1718101665014762221	CMakeFiles/main.dir/static_list.c.o	c7f8dc125e1e2a77
+0	56	1718128468775233315	build.ninja	ee5374528fbea36f

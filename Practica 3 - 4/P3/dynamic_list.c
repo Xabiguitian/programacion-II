@@ -76,7 +76,7 @@ tPosL previous(tPosL pos, tList list) {
     return posPrev;
 }
 
-bool insertItem(tItemL item, tPosL pos, tList *list) {
+bool insertItem(tItemL item, tList *list) {
     tPosL posInsert;
     if (!createNode(&posInsert)) {
         return false;
@@ -95,26 +95,18 @@ bool insertItem(tItemL item, tPosL pos, tList *list) {
         return false;
     }
 
-    if (pos == LNULL) {
-        tPosL prev = LNULL;
-        tPosL current = *list;
-        while (current != LNULL && strcmp(item.userName, current->data.userName) > 0) {
-            prev = current;
-            current = current->next;
-        }
-        if (prev == LNULL) {
-            posInsert->next = *list;
-            *list = posInsert;
-        } else {
-            posInsert->next = current;
-            prev->next = posInsert;
-        }
-    } else if (pos == *list) {
-        posInsert->next = pos;
+    tPosL prev = LNULL;
+    tPosL current = *list;
+    while (current != LNULL && strcmp(item.userName, current->data.userName) > 0) {
+        prev = current;
+        current = current->next;
+    }
+    if (prev == LNULL) {
+        posInsert->next = *list;
         *list = posInsert;
     } else {
-        posInsert->next = pos->next;
-        pos->next = posInsert;
+        posInsert->next = current;
+        prev->next = posInsert;
     }
 
     return true;

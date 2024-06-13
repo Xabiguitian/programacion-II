@@ -1,0 +1,13 @@
+# ninja log v5
+0	177	1714136766856046075	CMakeFiles/main.dir/main.c.o	5a3aec17df164405
+0	72	1718264037217641817	build.ninja	d365854273a0c6a4
+3	2937	1715190156928601118	CMakeFiles/test_song_list.dir/song_list.c.o	3d180e7aa7d648d4
+1	176	1714136766854157675	CMakeFiles/main.dir/song_list.c.o	a12442453ee1a36b
+0	2934	1715244168688585565	CMakeFiles/test_user_list.dir/test_user_list.c.o	6e6a4505da806922
+1	177	1714136766854154508	CMakeFiles/main.dir/user_list.c.o	fd86ac014291809b
+1	2935	1715244168689175378	CMakeFiles/test_user_list.dir/user_list.c.o	e82fe18e33816215
+3	2932	1715190156928557120	CMakeFiles/test_song_list.dir/test_song_list.c.o	4a8e92a53eb528b4
+0	61	1718264066674736622	CMakeFiles/main.dir/song_list.c.o	ee22622ff9a4ad14
+0	62	1718264066674619585	CMakeFiles/main.dir/user_list.c.o	c4f372213afc6f26
+0	66	1718264066681283761	CMakeFiles/main.dir/main.c.o	7f858497c1d5ceec
+66	101	1718264066716556742	/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 3 - 4/P4/bin/main	8ba7ef34bfbd5e80

@@ -31,7 +31,7 @@ void New(char *param1, char *param2, tList *list){
 
 
     if (findItem(newUser.userName, *list) == LNULL) {
-         if (insertItem(newUser,LNULL, list) == true) {
+         if (insertItem(newUser, list) == true) {
              printf("* New: user %s category %s\n", newUser.userName,
              (newUser.userCategory == basic) ? "basic" : "pro");
          } else {
@@ -97,6 +97,7 @@ void Play(char *param1, char *param2, tList *list){
 }
 
 void Stats (tList *list){
+    #ifdef DYNAMIC_LIST
     int basicUsers = 0, proUsers = 0, totalPlays_pro = 0, totalPlays_basic=0;
     for (tPosL pos = *list; pos != LNULL; pos = pos->next) {
         printf("User %s category %s numplays %d\n", pos->data.userName,
@@ -111,6 +112,24 @@ void Stats (tList *list){
         }
 
     }
+    #endif
+
+    #ifdef STATIC_LIST
+    int basicUsers = 0, proUsers = 0, totalPlays_pro = 0, totalPlays_basic=0;
+    for (int i = 0; i <= list->lastPos; i++) {
+        printf("User %s category %s numplays %d\n", list->data[i].userName,
+                (list->data[i].userCategory == basic) ? "basic" : "pro", list->data[i].numPlay);
+
+        if (list->data[i].userCategory == basic) {
+            basicUsers++;
+            totalPlays_basic += list->data[i].numPlay;
+        } else {
+            proUsers++;
+            totalPlays_pro += list->data[i].numPlay;
+        }
+
+    }
+    #endif
 
     printf("Category  Users  Plays  Average\n");
     float avgBasic = (basicUsers > 0) ? (float)totalPlays_basic / (float)basicUsers : 0;

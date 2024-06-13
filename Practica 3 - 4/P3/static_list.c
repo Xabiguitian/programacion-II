@@ -36,19 +36,19 @@ tPosL last(tList list) {
 }
 
 // Devuelve la posición del siguiente usuario después de la posición dada
-tPosL next(tPosL p, tList list) {
-    if(p >= list.lastPos || p < 0){
+tPosL next(tPosL pos, tList list) {
+    if(pos >= list.lastPos || pos < 0){
         return LNULL;
     }
-    return p++;
+    return pos++;
 }
 
 //Devuelve la posición del usuario anterior a la posición dada
-tPosL previous(tPosL p, tList list) {
-    if(p > list.lastPos || p <= 0){
+tPosL previous(tPosL pos, tList list) {
+    if(pos > list.lastPos || pos <= 0){
         return LNULL;
     }
-    return p--;
+    return pos--;
 }
 
 //Inserta  un nuevo usuario en la posición dada
@@ -57,45 +57,39 @@ bool insertItem(tItemL item, tList *list) {
         return false; // Lista llena
     }
 
-
-
-    for (int i = 0; i > numUsers(*list); i++) {
-        if (strcmp(item.userName, list->data[i].userName) < 0){
-        }else {
-            for (int j = numUsers(*list); j > i; --j) {
-                list->data[j+1] = list->data[j];
-            }
-            list->data[i] = item;
-        }
+    int i;
+    for (i = numUsers(*list); i > 0 && strcmp(item.userName, list->data[i-1].userName) < 0; i--) {
+        list->data[i] = list->data[i-1];
     }
+    list->data[i] = item;
     list->lastPos++;
     return true;
 }
 
 // Elimina el usuario en la posición dada
-void deleteAtPosition(tPosL p, tList *list) {
-    if (p < 0 || p >= numUsers(*list)) {
+void deleteAtPosition(tPosL pos, tList *list) {
+    if (pos < 0 || pos >= numUsers(*list)) {
         return; // Invalid position
     }
 
-    for (int i = p; i < list->lastPos; i++) {
+    for (int i = pos; i < list->lastPos; i++) {
         list->data[i] = list->data[i + 1];
     }
 
-    list->lastPos;
+    list->lastPos--;
 }
 
 // Devuelve el usuario en la posición dada
-tItemL getItem(tPosL p, tList list) {
-    return list.data[p];
+tItemL getItem(tPosL pos, tList list) {
+    return list.data[pos];
 }
 
 // actualiza el usuario en la posición dada con el nuevo valor proporcionado
-void updateItem(tItemL item, tPosL p, tList *list) {
-    if (p < 0 || p > list->lastPos){
+void updateItem(tItemL item, tPosL pos, tList *list) {
+    if (pos < 0 || pos > list->lastPos){
         return;
     }
-    list->data[p] = item;
+    list->data[pos] = item;
 }
 
 //Busca un usuario por nombre de usuario y devuelve su posición en la lista
