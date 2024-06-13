@@ -35,23 +35,23 @@ int main() {
 
     /* insert */
     strcpy(item1.songTitle, "song3");
-    insertItemS(item1, NULLS, &list);
+    insertItemS(item1, &list);
     print_list(list);
 
     strcpy(item1.songTitle, "song1");
-    insertItemS(item1, firstS(list), &list);
+    insertItemS(item1, &list);
     print_list(list);
 
     strcpy(item1.songTitle, "song5");
-    insertItemS(item1, NULLS, &list);
+    insertItemS(item1, &list);
     print_list(list);
 
     strcpy(item1.songTitle, "song2");
-    insertItemS(item1, nextS(firstS(list), list), &list);
+    insertItemS(item1, &list);
     print_list(list);
 
     strcpy(item1.songTitle, "song4");
-    insertItemS(item1, lastS(list), &list);
+    insertItemS(item1, &list);
     print_list(list);
 
 
@@ -90,7 +90,7 @@ int main() {
     deleteAtPositionS(firstS(list),&list);
     print_list(list);
 
-    insertItemS(item1, NULLS, &list);
+    insertItemS(item1, &list);
     print_list(list);
 
 }

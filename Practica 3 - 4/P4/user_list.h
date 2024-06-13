@@ -1,19 +1,20 @@
 /*
  * TITLE: PROGRAMMING II LABS
- * SUBTITLE: Practical 2
+ * SUBTITLE: Practical 1
  * AUTHOR 1: Xabier Guitián López LOGIN 1: x.guitian@udc.es
  * AUTHOR 2: Lucas Marqués Núñez LOGIN 2: lucas.marques@udc.es
  * GROUP: 2.4
  * DATE: 08 / 03 / 24
  */
 
-#ifndef USER_LIST_H
-#define USER_LIST_H
+#ifndef DYNAMIC_LIST_H
+#define DYNAMIC_LIST_H
 
 #include "types.h"
 #include "song_list.h"
 
-typedef int tPosU; // Posición en la lista de usuarios
+#define NULLU NULL
+
 
 typedef struct tItemU { //Estructura para un elemento de la lista de usuarios, en el que se especifica el nombre de usuario, el numero de reproducciones y la categoria del mismo
     tUserName userName;
@@ -22,22 +23,27 @@ typedef struct tItemU { //Estructura para un elemento de la lista de usuarios, e
     tListS songList;
 } tItemU;
 
-typedef struct tListU { // estructura para la lista de usuarios
-    tItemU userList[MAX_USERS]; // Array de elementos de usuario
-    int numUsers; // Numero actual de usuarios en la lista
-} tListU;
+typedef struct tNode *tPosU;
 
-void createEmptyListU(tListU *list); //Crea una lista inicializada con el número de usuarios en 0
-bool isEmptyListU(struct tListU list); //Comprueba que la lista esté vacia
-tItemU getItemU(tPosU pos,struct tListU list); //Busca el usuario en la posición indicada
-void updateItemU(tItemU item, tPosU pos,struct tListU *list); //Reemplaza el elemento en la posición indicada
-tPosU firstU(struct tListU list); //Si la lista contiene elementos devuelve el de la primera posición,si está vacia devuelve NULLU
-tPosU lastU(struct tListU list); //Si la lista contiene elementos devuelve el de la última posición,si está vacia devuelve NULLU
-tPosU nextU(tPosU pos,tListU list); //Si existe siguiente posición devuelve el elemento de dicha, si es la última o inválida devuelve NULLU
-tPosU previousU(tPosU pos,tListU list);//Si existe anterior posición devuelve el elemento de dicha, si es la primera o inválida devuelve NULLU
+typedef struct tNode{
+    tItemU data;
+    tPosU next;
+} tNode;
 
-tPosU findItemU(tUserName username, tListU list); //Busca un usuario, si lo encuentra devuelve la posición, si no devuelve LNULLU
-bool insertItemU (tItemU item, tListU *list); //Si la lista está llena devuelve false, si la lista está vacia inserta el item en la primera posición y si no está vacia ni llena busca un lugar para insertarlo en la posición correcta
-void deleteAtPositionU (tPosU pos, tListU *list); //Si la posición está en la lista y no tiene canciones, elimina el usuario y en caso de no ser el último, recoloca la lista
+typedef tPosU tListU;
+
+void createEmptyList(tListU *list);
+bool isEmptyList(tListU list);
+bool createNode(tPosU *pos);
+int numUsers(tListU list);
+bool insertItem(tItemU item, tListU *list);
+void deleteAtPosition(tPosU pos, tListU *list);
+tItemU getItem(tPosU pos, tListU list);
+void updateItem(tItemU item, tPosU pos, tListU *list);
+tPosU findItem(tUserName username, tListU list);
+tPosU first(tListU list);
+tPosU last(tListU list);
+tPosU next(tPosU pos, tListU list);
+tPosU previous(tPosU pos, tListU list);
 
 #endif

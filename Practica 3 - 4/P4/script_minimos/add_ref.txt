@@ -24,12 +24,12 @@ Category  Users  TimePlay  Average
 Basic         1         0     0.00
 Pro           1         0     0.00
 ********************
-05 A: user user1 song song1
-* Add: user user1 adds song song1
+05 A: user user1 song song3
+* Add: user user1 adds song song3
 ********************
 06 S:
 User user1 category pro totalplaytime 0
-Song song1 playtime 0
+Song song3 playtime 0
 
 User user2 category basic totalplaytime 0
 No songs
@@ -38,13 +38,29 @@ Category  Users  TimePlay  Average
 Basic         1         0     0.00
 Pro           1         0     0.00
 ********************
-07 A: user user1 song song2
-* Add: user user1 adds song song2
+07 A: user user1 song song1
+* Add: user user1 adds song song1
 ********************
 08 S:
 User user1 category pro totalplaytime 0
 Song song1 playtime 0
+Song song3 playtime 0
+
+User user2 category basic totalplaytime 0
+No songs
+
+Category  Users  TimePlay  Average
+Basic         1         0     0.00
+Pro           1         0     0.00
+********************
+09 A: user user1 song song2
+* Add: user user1 adds song song2
+********************
+10 S:
+User user1 category pro totalplaytime 0
+Song song1 playtime 0
 Song song2 playtime 0
+Song song3 playtime 0
 
 User user2 category basic totalplaytime 0
 No songs

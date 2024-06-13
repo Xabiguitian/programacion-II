@@ -37,8 +37,8 @@ while getopts "p:v" opt; do
 done
 if [ "$MAIN_NAME" = "main" ]
 then
-  ficherosEntrada=("script_minimos/new" "script_minimos/add" "script_minimos/play" "script_minimos/delete1" "script_minimos/delete2" "script_minimos/upgrade" "script_minimos/remove")
-  ficherosRef=("script_minimos/new_ref" "script_minimos/add_ref" "script_minimos/play_ref" "script_minimos/delete1_ref" "script_minimos/delete2_ref" "script_minimos/upgrade_ref" "script_minimos/remove_ref")
+  ficherosEntrada=("script_minimos/new" "script_minimos/add" "script_minimos/play" "script_minimos/delete1" "script_minimos/delete2" "script_minimos/upgrade" "script_minimos/remove" "script_minimos/applypromo")
+  ficherosRef=("script_minimos/new_ref" "script_minimos/add_ref" "script_minimos/play_ref" "script_minimos/delete1_ref" "script_minimos/delete2_ref" "script_minimos/upgrade_ref" "script_minimos/remove_ref" "script_minimos/applypromo_ref")
 else
   ficherosEntrada=("")
   ficherosRef=("script_test/song_list_ref" "script_test/user_list_ref")
@@ -159,7 +159,7 @@ then
   check_output "./main" 2 "song_list.c user_list.c" ${VERBOSE}
   MAIN_OK=${allOK}
   CHECKPOINT_OK=${checkpoint}
-  show_result "Checkpoint #2 result (April 19th):" ${CHECKPOINT_OK}
+  #show_result "Checkpoint #2 result:" ${CHECKPOINT_OK}
   show_result "Main global result:" ${MAIN_OK}
   
 else
@@ -182,7 +182,7 @@ else
   printf "========\n"
   show_result "Song list test:" ${SONG_LIST_OK}
   show_result "User list test:" ${USER_LIST_OK}
-  show_result "Tests global result (checkpoint #1 - April 12th):" $((${SONG_LIST_OK} * ${USER_LIST_OK}))
+  show_result "Tests global result:" $((${SONG_LIST_OK} * ${USER_LIST_OK}))
   
 fi
 

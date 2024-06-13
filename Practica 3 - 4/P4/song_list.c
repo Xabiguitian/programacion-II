@@ -1,111 +1,133 @@
 /*
  * TITLE: PROGRAMMING II LABS
- * SUBTITLE: Practical 2
+ * SUBTITLE: Practical 1
  * AUTHOR 1: Xabier Guitián López LOGIN 1: x.guitian@udc.es
  * AUTHOR 2: Lucas Marqués Núñez LOGIN 2: lucas.marques@udc.es
  * GROUP: 2.4
  * DATE: 08 / 03 / 24
  */
-
 #include "types.h"
 #include "song_list.h"
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
-
-void createEmptyListS (tListS *list) {
-    list->numSongs = 0; // Inicializa el número de usuarios en 0
+void createEmptyListS(tListS *list) {
+    *list = NULLS;
 }
 
-bool isEmptyListS (tListS list) {
-    return list.numSongs == 0; // Devuelve true si la lista está vacía
+bool isEmptyListS(tListS list) {
+    return list == NULLS;
 }
 
-tPosS firstS (tListS list) {
+bool createNodeS(tPosS *pos) {
+    *pos = malloc(sizeof(struct tNode));
+    return *pos != NULLS;
+}
+
+int numUsersS(tListS list) {
+    int count = 0;
+    for (tPosS pos = list; pos != NULLS; pos = pos->next) {
+        count++;
+    }
+    return count;
+}
+
+tPosS findItem(tUserName username, tListS list) {
+    for (tPosS pos = list; pos != NULLS; pos = pos->next) {
+        if (strcmp(pos->data.songTitle, username) == 0) {
+            return pos;
+        }
+    }
+    return NULLS;
+}
+
+tItemS getItem(tPosS pos, tListS list) {
+    return pos->data;
+}
+
+void updateItem(tItemS item, tPosS pos, tListS *list) {
+    pos->data = item;
+}
+
+tPosS first(tListS list) {
+    return list;
+}
+
+tPosS last(tListS list) {
     if (isEmptyListS(list)) {
-        return NULLS; // Lista vacía
+        return NULLS;
     }
-    return 0; // Primera posición
+    tPosS pos;
+    for (pos = list; pos->next != NULLS; pos = pos->next);
+    return pos;
 }
 
-tPosS lastS (tListS list) {
-    if (isEmptyListS (list)) {
-        return NULLS; // Lista vacía
-    }
-    return list.numSongs - 1; // Última posición
+tPosS nextS(tPosS pos, tListS list) {
+    return pos->next;
 }
 
-tPosS nextS (tPosS pos,tListS list) {
-    if (pos < 0 || pos >= MAX_LIST_LENGTH || pos >= list.numSongs) {
-        return NULLU; // Posición inválida o última posición
+tPosS previousS(tPosS pos, tListS list) {
+    if (pos == list) {
+        return NULLS;
     }
-    return pos + 1; // Siguiente posición
+    tPosS posPrev;
+    for (posPrev = list; posPrev->next != pos; posPrev = posPrev->next);
+    return posPrev;
 }
 
-tPosS previousS (tPosS pos,tListS list) {
-    if (pos <= 0 || pos > MAX_LIST_LENGTH || pos >= list.numSongs) {
-        return NULLU; // Posición inválida o primera posición
-    }
-    return pos - 1; // Posición anterior
-}
-
-bool insertItemS (tItemS item, tPosS pos, tListS *list) {
-    if (list->numSongs >= MAX_LIST_LENGTH) {
-        // La lista está llena
+bool insertItemS(tItemS item, tListS *list) {
+    tPosS posInsert;
+    if (!createNodeS(&posInsert)) {
         return false;
     }
 
-    if (pos == NULLS){
-        list->songList[lastS(*list)+1].playTime = item.playTime;
-        strcpy(list->songList[lastS(*list)+1].songTitle, item.songTitle);
-        list->numSongs++; // Incrementar el número de usuarios
+    posInsert->data = item;
+    posInsert->next = NULLS;
+
+    if (*list == NULLS) {
+        *list = posInsert;
         return true;
     }
 
-    // Desplazar los elementos hacia adelante para hacer espacio para el nuevo elemento
-    for (int i = list->numSongs; i > pos; i--) {
-        list->songList[i] = list->songList[i - 1];
+    if (findItem(item.songTitle, *list) != NULLS) {
+        free(posInsert);  // Liberar el nodo creado si ya existe el item
+        return false;
     }
 
-    // Insertar el nuevo elemento en la posición indicada
-    list->songList[pos].playTime = item.playTime;
-    strcpy(list->songList[pos].songTitle, item.songTitle);
-    list->numSongs++; // Incrementar el número de usuarios
+    tPosS prev = NULLS;
+    tPosS current = *list;
+    while (current != NULLS && strcmp(item.songTitle, current->data.songTitle) > 0) {
+        prev = current;
+        current = current->next;
+    }
+    if (prev == NULLS) {
+        posInsert->next = *list;
+        *list = posInsert;
+    } else {
+        posInsert->next = current;
+        prev->next = posInsert;
+    }
+
     return true;
 }
 
-void deleteAtPositionS(tPosS pos,tListS *list) {
-    if (isEmptyListS(*list)) {
-        // Lista vacía, no se puede eliminar
-        return;
+void deleteAtPositionS(tPosS pos, tListS *list) {
+    if (isEmptyListS(*list)) return;
+
+    if (findItem(pos->data.songTitle, *list) == NULLS) {
+        return;  // Posición inválida
+    } else if (pos == *list) {
+        *list = pos->next;
+        free(pos);
+    } else if (pos->next == NULLS) {
+        tPosS prev = previousS(pos, *list);
+        prev->next = NULLS;
+        free(pos);
+    } else {
+        tPosS q = pos->next;
+        pos->data = q->data;
+        pos->next = q->next;
+        free(q);
     }
-
-    if (pos < 0 || pos >= list->numSongs) {
-        // Posición inválida
-        return;
-    }
-
-    // Desplazar los elementos hacia atrás para eliminar el elemento en la posición indicada
-    for (int i = pos; i < list->numSongs - 1; i++) {
-        list->songList[i] = list->songList[i + 1];
-    }
-
-    list->numSongs--; // Decrementar el número de usuarios
-}
-
-tItemS getItemS (tPosS pos,tListS list) {
-    return list.songList[pos]; //Develve el elemento de la posición indicada
-}
-
-void updateItemS (tItemS item, tPosS pos, tListS *list) {
-    list->songList[pos] = item; //Cambia el elemento de la lista en la posición indicada por el item seleccionado
-}
-
-tPosS findItemS (tSongTitle songtitle, tListS list) {
-    for (int i = 0; i < list.numSongs; i++) {
-        if (strcmp(list.songList[i].songTitle, songtitle) == 0) {
-            return i; // Se encontró el usuario, devuelve la posición
-        }
-    }
-    return NULLS; // No se encontró el usuario, devuelve NULLS
 }
