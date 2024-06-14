@@ -13,24 +13,24 @@
 #include "types.h"
 #include "song_list.h"
 
-#define NULLU NULL
+#define NULLU NULL //Constante usada para indicar posiciones nulas de la lista de usuarios
 
 
-typedef struct tItemU { //Estructura para un elemento de la lista de usuarios, en el que se especifica el nombre de usuario, el numero de reproducciones y la categoria del mismo
-    tUserName userName;
-    tPlayTime totalPlayTime;
-    tUserCategory userCategory;
-    tListS songList;
+typedef struct tItemU { //Datos de un elemento de la lista (un usuario)
+    tUserName userName; //Nombre del usuario
+    tPlayTime totalPlayTime; //Tiempo de reproducción
+    tUserCategory userCategory; //Categoria del usuario
+    tListS songList; //Lista de canciones
 } tItemU;
 
-typedef struct tNodeU *tPosU;
+typedef struct tNodeU *tPosU; //Posición de un elemento de la lista de usuarios
 
 typedef struct tNodeU{
     tItemU data;
     tPosU next;
 } tNodeU;
 
-typedef tPosU tListU;
+typedef tPosU tListU; //Representa una lista de usuarios ordenada por sus nombres.
 
 void createEmptyListU(tListU *list);
 bool isEmptyListU(tListU list);

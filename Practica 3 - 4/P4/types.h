@@ -1,7 +1,7 @@
 #ifndef PRO2_2023_P1_TYPES_H
 #define PRO2_2023_P1_TYPES_H
 
-#define NAME_LENGTH_LIMIT 25
+#define NAME_LENGTH_LIMIT 25 //Longitud máxima de un nombre de usuario y de un título de canción
 
 #define MAX_USERS 25
 

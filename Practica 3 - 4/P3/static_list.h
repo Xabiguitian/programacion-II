@@ -22,7 +22,7 @@ typedef struct {
     tPosL lastPos;
 } tList;
 
-
+int numUsers(tList list);
 void createEmptyList(tList *list);
 bool isEmptyList(tList list);
 tPosL first(tList list);

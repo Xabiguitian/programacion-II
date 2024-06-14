@@ -1,5 +1,5 @@
-C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/cmake-build-debug/CMakeFiles/test_song_list.dir
-C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/cmake-build-debug/CMakeFiles/test_user_list.dir
-C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/cmake-build-debug/CMakeFiles/main.dir
-C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 3 - 4/P4/cmake-build-debug/CMakeFiles/test_song_list.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 3 - 4/P4/cmake-build-debug/CMakeFiles/test_user_list.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 3 - 4/P4/cmake-build-debug/CMakeFiles/main.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 3 - 4/P4/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 3 - 4/P4/cmake-build-debug/CMakeFiles/rebuild_cache.dir

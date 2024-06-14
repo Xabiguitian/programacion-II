@@ -26,7 +26,6 @@ typedef tPosL tList;
 void createEmptyList(tList *list);
 bool isEmptyList(tList list);
 bool createNode(tPosL *pos);
-int numUsers(tList list);
 bool insertItem(tItemL item, tList *list);
 void deleteAtPosition(tPosL pos, tList *list);
 tItemL getItem(tPosL pos, tList list);

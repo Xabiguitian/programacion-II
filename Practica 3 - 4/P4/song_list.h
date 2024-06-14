@@ -25,7 +25,7 @@ typedef struct tNodeS{
     tPosS next;
 } tNodeS;
 
-typedef tPosS tListS;
+typedef tPosS tListS; //Representa la lista de canciones
 
 void createEmptyListS(tListS *list);
 bool isEmptyListS(tListS list);

@@ -1,12 +1,2 @@
 # ninja log v5
-1	346	7400592902345492	build.ninja	e7375d3ee4706f95
-31	282	7400582846923272	CMakeFiles/main.dir/song_list.c.obj	79beb177e2f71e44
-5	721	7400590831292946	CMakeFiles/main.dir/main.c.obj	daf07e59c9e6e5d6
-47	274	7400582846849383	CMakeFiles/main.dir/user_list.c.obj	5ddcc5075b68ab9e
-723	1303	7400590836987514	C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/bin/main.exe	b1c0a7360ae71182
-31	194	7400597750464295	CMakeFiles/test_song_list.dir/test_song_list.c.obj	3d5cd415edc26271
-2	198	7400597750494304	CMakeFiles/test_song_list.dir/song_list.c.obj	daf7b6918055b44f
-198	429	7400597752750194	C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/bin/test_song_list.exe	4df896a5ddb19a66
-430	11758	7400598441654650	CMakeFiles/test_user_list.dir/user_list.c.obj	5ca11310c71e170f
-24	31006	7400598634295524	CMakeFiles/test_user_list.dir/test_user_list.c.obj	cee657a0d356a90a
-31006	33318	7400598657202317	C:/Users/lucas/OneDrive - Universidade da Coruña/Practica 3 - 4 - Archivos de Xabier Guitián López/P4/bin/test_user_list.exe	9bca2ee56e28f0f9
+1	346	1718367677773076181	build.ninja	e7375d3ee4706f95

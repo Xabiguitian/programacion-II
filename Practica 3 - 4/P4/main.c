@@ -16,7 +16,15 @@
 
 #define MAX_BUFFER 255
 
-
+/*
+ *  Objetivo: Agregar un nuevo usuario a la lista de usuarios.
+ *  Precondiciones: list ya existe, param1 es el nombre único del ususario.
+ * Postcondiciones:Se agrega un nuevo usuario a la lista de usuarios si no existeç
+ * se manda un mensaje indicando si fue un éxito.
+ * Entradas: tListU list es la lista de usuarios, param1 es el nombre único del ususario,
+ * y param 2 es la categoría.
+ * Salidas:Mensaje que indica si la operación se pudo o no cumplir.
+ */
 void New(char *param1, char *param2, tListU *list) {
     tItemU newUser;
     strcpy(newUser.userName, param1);
@@ -36,6 +44,16 @@ void New(char *param1, char *param2, tListU *list) {
     }
 }
 
+
+
+/*
+ *  Objetivo: Eliminar un usuario a la lista de usuarios.
+ *  Precondiciones: list ya existe, param1 es el nombre único del ususario.
+ * Postcondiciones:Se elimina un usuario a la lista de usuarios si existe
+ * se manda un mensaje indicando si fue un éxito.
+ * Entradas: tListU list es la lista de usuarios, param1 es el nombre único del ususario.
+ * Salidas:Mensaje que indica si la operación se pudo o no cumplir.
+ */
 void Delete(char *param1, tListU *list) {
     if (!isEmptyListU(*list)) {
         tPosU pos = findItemU(param1, *list);
@@ -52,6 +70,16 @@ void Delete(char *param1, tListU *list) {
     }
 }
 
+
+
+/*
+ *  Objetivo: Aumentar la categoría de un usuario basic.
+ *  Precondiciones: list ya existe, param1 es el nombre único del ususario.
+ * Postcondiciones:Se actualiza al usuario a una categoría superior y
+ * se manda un mensaje indicando si fue un éxito.
+ * Entradas: tListU list es la lista de usuarios, param1 es el nombre único del ususario.
+ * Salidas:Mensaje que indica si la operación se pudo o no cumplir.
+ */
 void Upgrade(char *param1, tListU *list) {
     if (!isEmptyListU(*list)) {
         tPosU upgradePos = findItemU(param1, *list);
@@ -72,6 +100,19 @@ void Upgrade(char *param1, tListU *list) {
     }
 }
 
+
+
+
+/*
+ *  Objetivo: Reproduce una canción durante ciertos minutos a un usuario.
+ *  Precondiciones: list ya existe, param1 es el nombre único del ususario,
+ *  param2 es el título de la canción y param3 los minutos.
+ * Postcondiciones:Se registra el tiempo de reproducción, y si el usuario y
+ * de la canción existen.
+ * Entradas: tListU list es la lista de usuarios, param1 es el nombre único del ususario,
+*  param2 es el título de la canción y param3 los minutos.
+ * Salidas:Mensaje que indica si la operación se pudo o no cumplir.
+ */
 void Play(char *param1, char *param2, char *param3, tListU *list) {
     int minutos;
     sscanf(param3, "%d",&minutos);
@@ -101,6 +142,19 @@ void Play(char *param1, char *param2, char *param3, tListU *list) {
     }
 }
 
+
+
+
+
+/*
+ *  Objetivo: Elimina un ususario cuyo tiempo total excede el límite.
+ *  Precondiciones: list ya existe, param1 es el nombre único del ususario.
+ * Postcondiciones:Se elimina el usuario cuyo tiempo de reproduccion exceda el límite y
+ * se muestra un mensaje que indica éxito o fracaso.
+ * Entradas: tListU list es la lista de usuarios, maxTime el tiempo máximo de reproducción,
+ * y param1 el nombre de ususario.
+ * Salidas:Mensaje que indica si la operación se pudo o no cumplir.
+ */
 void Remove(char *param1, tListU *list) { // Elimina usuarios "basic" que exceden el límite de reproducción
     int maxTime;
     sscanf(param1, "%d", &maxTime); // Añade el número indicado en param1 en maxTime
@@ -152,6 +206,15 @@ void Remove(char *param1, tListU *list) { // Elimina usuarios "basic" que excede
 
 
 
+/*
+ *  Objetivo: Mostrar las estadísticas sobre los usuarios y las canciones.
+ *  Precondiciones: tListU list ya existe.
+ * Postcondiciones: Se muestran estadísticas sobre los usuarios y sus canciones, incluyendo
+ * el número total de usuarios, el tiempo total de reproducción, y el tiempo
+ * promedio de reproducción por usuario y categoría
+ * Entradas: tListU es la lista de usuarios.
+ * Salidas:Mensaje que indica si la operación se pudo o no cumplir y las estadisticas.
+ */
 void Stats(tListU *list) {
     if (!isEmptyListU(*list)) {
         int basicUsers = 0, proUsers = 0, totalPlaysPro = 0, totalPlaysBasic = 0;
@@ -186,6 +249,15 @@ void Stats(tListU *list) {
     }
 }
 
+
+/*
+ *  Objetivo: Agregar una nueva canción a la lista de canciones de un usuario.
+ *  Precondiciones: tListU list ya existe, param1 es el nombre de usuario y param2 es la canción.
+ * Postcondiciones: Se agrega la canción a la lista de canciones del usuario si el usuario
+ * existe y la canción no está ya en su lista, y se muestra si fue un exito  o no.
+ * Entradas: tListU es la lista de usuarios param1 el nombre de usuario, y param2 la canción.
+ * Salidas:Mensaje que indica si la operación se pudo o no cumplir.
+ */
 void Add (char *param1, char *param2, tListU *list){ //Función que añade una canción a un usuario
     if(!isEmptyListU(*list)) {
         tPosU posU = findItemU(param1, *list); //Busca y guarda la posición del usuario que se busca
@@ -213,6 +285,17 @@ void Add (char *param1, char *param2, tListU *list){ //Función que añade una c
         printf("+ Error: Add not possible\n"); //Si lo anterior no se cumple muestra un error
     }
 }
+
+
+
+
+/*
+ *  Objetivo: Bajar a 0 el playtime de los usuarios basic con diferencia menor de 30 minutos con el máximo basic.
+ *  Precondiciones: tListU list ya existe y maxTimeBasic es el tiempo del basic con más minutos.
+ * Postcondiciones: Se le baja a 0  los minutos reprodocidos a los usuarios basic con diferencia menor de 30 minutos con el máximo basic.
+ * Entradas: tListU es la lista de usuarios.
+ * Salidas:Mensaje que indica la cantidad de ususarios con el tiempo reestablecido.
+ */
 void applyPromo(tListU *list){
     if(!isEmptyListU(*list)) {
         int maxTimeBasic = 0;

@@ -15,27 +15,55 @@ int numUsers(tList list){
     return list.lastPos +1;
 }
 
-//Crea una lista vacía
+/*
+Objetivo: Crea una lista vacía.
+ Entrada: puntero lista
+ Salida: tList list vacía
+ Postcondiciones: La lista queda inicializada y no contiene elementos.
+ */
 void createEmptyList(tList *list) {
     list->lastPos = LNULL;
 }
 
-// comprueba si la lista está vacía
+/*
+Objetivo: Determina si la lista está vacía.
+ Entrada: list a evaluar
+ Salida: true si está vacía, false si no lo está
+ Precondición: La lista debe estar previamente inicializada.
+ */
 bool isEmptyList(tList list) {
     return list.lastPos == LNULL;
 }
 
-// Devuelve la posición del primer usuario en la lista, o LNULL si está vacía
+/*
+Objetivo: Devuelve la posición del primer elemento de la lista.
+ Entrada: list
+ Salida: posición del primer elemento
+ Precondición: La lista no está vacía.
+ Precondición: La lista debe estar previamente inicializada.
+ */
 tPosL first(tList list) {
     return isEmptyList(list) ? LNULL : 0;
 }
 
-//Devuelve la posición del último usuario en la lista, o LNULL si está vacía
+/*
+Objetivo: Devuelve la posición del primer elemento de la lista.
+ Entrada: lista
+ Salida: posición del primer elemento
+ Precondición: La lista no está vacía.
+ Precondición: La lista debe estar previamente inicializada.
+ */
 tPosL last(tList list) {
-    return list.lastPos;
+    return isEmptyList(list) ? LNULL: list.lastPos;
 }
 
-// Devuelve la posición del siguiente usuario después de la posición dada
+/*
+ Objetivo: Devuelve la posición en la lista del elemento siguiente al de la posición indicada (o LNULL si la posición no tiene siguiente).
+ Entrada: posición y lista
+ Salida: posición del siguiente elemento
+ Precondición: La posición indicada es una posición válida en la lista.
+ Precondición: La lista debe estar previamente inicializada.
+ */
 tPosL next(tPosL pos, tList list) {
     if(pos >= list.lastPos || pos < 0){
         return LNULL;
@@ -43,7 +71,13 @@ tPosL next(tPosL pos, tList list) {
     return pos++;
 }
 
-//Devuelve la posición del usuario anterior a la posición dada
+/*
+ Objetivo: Devuelve la posición en la lista del elemento anterior al de la posición indicada (o LNULL si la posición no tiene anterior).
+ Entrada: posición y lista
+ Salida: posición del anterior elemento
+ Precondición: La posición indicada es una posición válida en la lista.
+ Precondición: La lista debe estar previamente inicializada.
+ */
 tPosL previous(tPosL pos, tList list) {
     if(pos > list.lastPos || pos <= 0){
         return LNULL;
@@ -51,7 +85,13 @@ tPosL previous(tPosL pos, tList list) {
     return pos--;
 }
 
-//Inserta  un nuevo usuario en la posición dada
+/*
+ Objetivo: Inserta un elemento en la lista de forma ordenada en base al campo userName.
+ Entrada: item a insertar y puntero a lista
+ Salida: Devuelve un valor true si el elemento fue insertado; false en caso contrario.
+ Precondición: La lista debe estar previamente inicializada.
+ Postcondición: Las posiciones de los elementos de la lista posteriores a la del elemento insertado pueden haber variado.
+ */
 bool insertItem(tItemL item, tList *list) {
     if (numUsers(*list) >= MAX_USERS) {
         return false; // Lista llena
@@ -66,7 +106,14 @@ bool insertItem(tItemL item, tList *list) {
     return true;
 }
 
-// Elimina el usuario en la posición dada
+/*
+ Objetivo: Elimina de la lista el elemento que ocupa la posición indicada.
+ Entrada: posición del elemento que se quiere eliminar y puntero a lista
+ Salida: lista sin el elemento
+ Precondición: La posición indicada es una posición válida en la lista.
+ Precondición: La lista debe estar previamente inicializada.
+ Postcondición: Las posiciones de los elementos de la lista posteriores a la de la posición eliminada pueden haber variado.
+ */
 void deleteAtPosition(tPosL pos, tList *list) {
     if (pos < 0 || pos >= numUsers(*list)) {
         return; // Invalid position
@@ -79,12 +126,25 @@ void deleteAtPosition(tPosL pos, tList *list) {
     list->lastPos--;
 }
 
-// Devuelve el usuario en la posición dada
+/*
+ Objetivo: Devuelve el contenido del elemento que ocupa la posición indicada.
+ Entrada: posición del elemento y lista
+ Salida: item de la posición indicada
+ Precondición: La posición indicada es una posición válida en la lista.
+ Precondición: La lista debe estar previamente inicializada.
+ */
 tItemL getItem(tPosL pos, tList list) {
     return list.data[pos];
 }
 
-// actualiza el usuario en la posición dada con el nuevo valor proporcionado
+/*
+ Objetivo: Modifica el contenido del elemento situado en la posición indicada.
+ Entrada: item nuevo que se quiere poner, posición del elemento a actualizar y puntero a lista
+ Salida: lista con el elemento actualizado
+ Precondiciones: La posición indicada es una posición válida en la lista.
+ Precondición: La lista debe estar previamente inicializada.
+ Precondición: El orden de los elementos de la lista no se ve modificado.
+ */
 void updateItem(tItemL item, tPosL pos, tList *list) {
     if (pos < 0 || pos > list->lastPos){
         return;
@@ -92,7 +152,12 @@ void updateItem(tItemL item, tPosL pos, tList *list) {
     list->data[pos] = item;
 }
 
-//Busca un usuario por nombre de usuario y devuelve su posición en la lista
+/*
+ Objetivo: Devuelve la posición del primer elemento de la lista cuyo nombre de usuario se corresponda con el indicado (o LNULL si no existe tal elemento).
+ Entrada: nombre de usuario a encontrar y lista
+ Salida: posición del elemento solicitado o LNULL si no existe
+ Precondición: La lista debe estar previamente inicializada.
+ */
 tPosL findItem(tUserName username, tList list) {
     for (int i = 0; i < numUsers(list); i++) {
         if (strcmp(list.data[i].userName, username) == 0) {
