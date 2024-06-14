@@ -1,5 +1,5 @@
-/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Práctica 2/P2/cmake-build-debug/CMakeFiles/test_song_list.dir
-/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Práctica 2/P2/cmake-build-debug/CMakeFiles/test_user_list.dir
-/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Práctica 2/P2/cmake-build-debug/CMakeFiles/main.dir
-/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Práctica 2/P2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Práctica 2/P2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 2/P2/cmake-build-debug/CMakeFiles/test_song_list.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 2/P2/cmake-build-debug/CMakeFiles/test_user_list.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 2/P2/cmake-build-debug/CMakeFiles/main.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 2/P2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoruña/Asignaturas 1º GEI/2 Cuatri/Programación II/Práctica/Practica 2/P2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

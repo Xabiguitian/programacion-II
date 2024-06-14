@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "P4",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-c7d17ca58647fc137c36.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_song_list::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_song_list-Debug-41f38f9e0af904b4f45c.json",
+					"name" : "test_song_list",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_user_list::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_user_list-Debug-644b09210e89fadccc28.json",
+					"name" : "test_user_list",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/lucas/OneDrive - Universidade da Coru\u00f1a/Practica 3 - 4 - Archivos de Xabier Guiti\u00e1n L\u00f3pez/P4/cmake-build-debug",
+		"source" : "C:/Users/lucas/OneDrive - Universidade da Coru\u00f1a/Practica 3 - 4 - Archivos de Xabier Guiti\u00e1n L\u00f3pez/P4"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

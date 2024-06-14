@@ -7,29 +7,29 @@
  * DATE: 08 / 03 / 24
  */
 
-#ifndef DYNAMIC_LIST_H
-#define DYNAMIC_LIST_H
+#define MAX_LIST_LENGTH 25
+
+#ifndef SONG_LIST_H
+#define SONG_LIST_H
 
 #include "types.h"
-#include "user_list.h"
 
 #define NULLS NULL
 
 typedef tSong tItemS; // Define cada tItemS como un elemento tSong
 
-typedef struct tNode *tPosS;
+typedef struct tNodeS *tPosS;
 
-typedef struct tNode{
+typedef struct tNodeS{
     tItemS data;
     tPosS next;
-} tNode;
+} tNodeS;
 
 typedef tPosS tListS;
 
 void createEmptyListS(tListS *list);
 bool isEmptyListS(tListS list);
 bool createNodeS(tPosS *pos);
-int numUsersS(tListS list);
 bool insertItemS(tItemS item, tListS *list);
 void deleteAtPositionS(tPosS pos, tListS *list);
 tItemS getItemS(tPosS pos, tListS list);

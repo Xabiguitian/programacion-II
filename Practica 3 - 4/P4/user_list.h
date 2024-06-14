@@ -7,8 +7,8 @@
  * DATE: 08 / 03 / 24
  */
 
-#ifndef DYNAMIC_LIST_H
-#define DYNAMIC_LIST_H
+#ifndef USER_LIST_H
+#define USER_LIST_H
 
 #include "types.h"
 #include "song_list.h"
@@ -23,27 +23,25 @@ typedef struct tItemU { //Estructura para un elemento de la lista de usuarios, e
     tListS songList;
 } tItemU;
 
-typedef struct tNode *tPosU;
+typedef struct tNodeU *tPosU;
 
-typedef struct tNode{
+typedef struct tNodeU{
     tItemU data;
     tPosU next;
-} tNode;
+} tNodeU;
 
 typedef tPosU tListU;
 
-void createEmptyList(tListU *list);
-bool isEmptyList(tListU list);
-bool createNode(tPosU *pos);
-int numUsers(tListU list);
-bool insertItem(tItemU item, tListU *list);
-void deleteAtPosition(tPosU pos, tListU *list);
-tItemU getItem(tPosU pos, tListU list);
-void updateItem(tItemU item, tPosU pos, tListU *list);
-tPosU findItem(tUserName username, tListU list);
-tPosU first(tListU list);
-tPosU last(tListU list);
-tPosU next(tPosU pos, tListU list);
-tPosU previous(tPosU pos, tListU list);
-
+void createEmptyListU(tListU *list);
+bool isEmptyListU(tListU list);
+bool createNodeU(tPosU *pos);
+bool insertItemU(tItemU item, tListU *list);
+void deleteAtPositionU(tPosU pos, tListU *list);
+tItemU getItemU(tPosU pos, tListU list);
+void updateItemU(tItemU item, tPosU pos, tListU *list);
+tPosU findItemU(tUserName username, tListU list);
+tPosU firstU(tListU list);
+tPosU lastU(tListU list);
+tPosU nextU(tPosU pos, tListU list);
+tPosU previousU(tPosU pos, tListU list);
 #endif

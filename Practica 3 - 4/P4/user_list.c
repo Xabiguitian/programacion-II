@@ -12,28 +12,20 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-void createEmptyList(tListU *list) {
+void createEmptyListU(tListU *list) {
     *list = NULLU;
 }
 
-bool isEmptyList(tListU list) {
+bool isEmptyListU(tListU list) {
     return list == NULLU;
 }
 
-bool createNode(tPosU *pos) {
-    *pos = malloc(sizeof(struct tNode));
+bool createNodeU(tPosU *pos) {
+    *pos = malloc(sizeof(struct tNodeU));
     return *pos != NULLU;
 }
 
-int numUsers(tListU list) {
-    int count = 0;
-    for (tPosU pos = list; pos != NULLU; pos = pos->next) {
-        count++;
-    }
-    return count;
-}
-
-tPosU findItem(tUserName username, tListU list) {
+tPosU findItemU(tUserName username, tListU list) {
     for (tPosU pos = list; pos != NULLU; pos = pos->next) {
         if (strcmp(pos->data.userName, username) == 0) {
             return pos;
@@ -42,20 +34,20 @@ tPosU findItem(tUserName username, tListU list) {
     return NULLU;
 }
 
-tItemU getItem(tPosU pos, tListU list) {
+tItemU getItemU(tPosU pos, tListU list) {
     return pos->data;
 }
 
-void updateItem(tItemU item, tPosU pos, tListU *list) {
+void updateItemU(tItemU item, tPosU pos, tListU *list) {
     pos->data = item;
 }
 
-tPosU first(tListU list) {
+tPosU firstU(tListU list) {
     return list;
 }
 
-tPosU last(tListU list) {
-    if (isEmptyList(list)) {
+tPosU lastU(tListU list) {
+    if (isEmptyListU(list)) {
         return NULLU;
     }
     tPosU pos;
@@ -63,11 +55,11 @@ tPosU last(tListU list) {
     return pos;
 }
 
-tPosU next(tPosU pos, tListU list) {
+tPosU nextU(tPosU pos, tListU list) {
     return pos->next;
 }
 
-tPosU previous(tPosU pos, tListU list) {
+tPosU previousU(tPosU pos, tListU list) {
     if (pos == list) {
         return NULLU;
     }
@@ -76,9 +68,9 @@ tPosU previous(tPosU pos, tListU list) {
     return posPrev;
 }
 
-bool insertItem(tItemU item, tListU *list) {
+bool insertItemU(tItemU item, tListU *list) {
     tPosU posInsert;
-    if (!createNode(&posInsert)) {
+    if (!createNodeU(&posInsert)) {
         return false;
     }
 
@@ -90,7 +82,7 @@ bool insertItem(tItemU item, tListU *list) {
         return true;
     }
 
-    if (findItem(item.userName, *list) != NULLU) {
+    if (findItemU(item.userName, *list) != NULLU) {
         free(posInsert);  // Liberar el nodo creado si ya existe el item
         return false;
     }
@@ -112,16 +104,16 @@ bool insertItem(tItemU item, tListU *list) {
     return true;
 }
 
-void deleteAtPosition(tPosU pos, tListU *list) {
-    if (isEmptyList(*list)) return;
+void deleteAtPositionU(tPosU pos, tListU *list) {
+    if (isEmptyListU(*list)) return;
 
-    if (findItem(pos->data.userName, *list) == NULLU) {
+    if (findItemU(pos->data.userName, *list) == NULLU) {
         return;  // Posición inválida
     } else if (pos == *list) {
         *list = pos->next;
         free(pos);
     } else if (pos->next == NULLU) {
-        tPosU prev = previous(pos, *list);
+        tPosU prev = previousU(pos, *list);
         prev->next = NULLU;
         free(pos);
     } else {

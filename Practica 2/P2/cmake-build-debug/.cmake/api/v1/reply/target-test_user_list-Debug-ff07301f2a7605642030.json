@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoru\u00f1a/Asignaturas 1\u00ba GEI/2 Cuatri/Programaci\u00f3n II/Pr\u00e1ctica/Pr\u00e1ctica 2/P2/bin/test_user_list"
+			"path" : "/Users/mac1/Library/CloudStorage/OneDrive-UniversidadedaCoru\u00f1a/Asignaturas 1\u00ba GEI/2 Cuatri/Programaci\u00f3n II/Pr\u00e1ctica/Practica 2/P2/bin/test_user_list"
 		}
 	],
 	"backtrace" : 1,
@@ -49,7 +49,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu99 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics"
+					"fragment" : "-g -std=gnu99 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fcolor-diagnostics"
 				},
 				{
 					"backtrace" : 2,
@@ -64,7 +64,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"define" : "INPUT_FILE=\"add.txt\""
+					"define" : "INPUT_FILE=\"play.txt\""
 				}
 			],
 			"language" : "C",

@@ -21,19 +21,11 @@ bool isEmptyListS(tListS list) {
 }
 
 bool createNodeS(tPosS *pos) {
-    *pos = malloc(sizeof(struct tNode));
+    *pos = malloc(sizeof(struct tNodeS));
     return *pos != NULLS;
 }
 
-int numUsersS(tListS list) {
-    int count = 0;
-    for (tPosS pos = list; pos != NULLS; pos = pos->next) {
-        count++;
-    }
-    return count;
-}
-
-tPosS findItem(tUserName username, tListS list) {
+tPosS findItemS(tUserName username, tListS list) {
     for (tPosS pos = list; pos != NULLS; pos = pos->next) {
         if (strcmp(pos->data.songTitle, username) == 0) {
             return pos;
@@ -42,19 +34,19 @@ tPosS findItem(tUserName username, tListS list) {
     return NULLS;
 }
 
-tItemS getItem(tPosS pos, tListS list) {
+tItemS getItemS(tPosS pos, tListS list) {
     return pos->data;
 }
 
-void updateItem(tItemS item, tPosS pos, tListS *list) {
+void updateItemS(tItemS item, tPosS pos, tListS *list) {
     pos->data = item;
 }
 
-tPosS first(tListS list) {
+tPosS firstS(tListS list) {
     return list;
 }
 
-tPosS last(tListS list) {
+tPosS lastS(tListS list) {
     if (isEmptyListS(list)) {
         return NULLS;
     }
@@ -82,6 +74,11 @@ bool insertItemS(tItemS item, tListS *list) {
         return false;
     }
 
+    if (findItemS(item.songTitle, *list) != NULLS) {
+        free(posInsert);  // Liberar el nodo creado si ya existe el item
+        return false;
+    }
+
     posInsert->data = item;
     posInsert->next = NULLS;
 
@@ -90,10 +87,6 @@ bool insertItemS(tItemS item, tListS *list) {
         return true;
     }
 
-    if (findItem(item.songTitle, *list) != NULLS) {
-        free(posInsert);  // Liberar el nodo creado si ya existe el item
-        return false;
-    }
 
     tPosS prev = NULLS;
     tPosS current = *list;
@@ -115,7 +108,7 @@ bool insertItemS(tItemS item, tListS *list) {
 void deleteAtPositionS(tPosS pos, tListS *list) {
     if (isEmptyListS(*list)) return;
 
-    if (findItem(pos->data.songTitle, *list) == NULLS) {
+    if (findItemS(pos->data.songTitle, *list) == NULLS) {
         return;  // Posición inválida
     } else if (pos == *list) {
         *list = pos->next;
