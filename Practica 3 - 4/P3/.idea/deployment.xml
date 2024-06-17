@@ -3,10 +3,17 @@
   <component name="PublishConfigData" serverName="servidor fic" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
+      <paths name="fic">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/FIC_BOX/P3" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="servidor fic">
         <serverdata>
           <mappings>
-            <mapping deploy="/FIC_BOX/P1 Nueva" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/FIC_BOX/P3" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

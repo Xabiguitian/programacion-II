@@ -11,18 +11,28 @@
 #define STATIC_LIST_H
 
 #include "types.h"
+#include <stdbool.h>
 
+#define MAX 25
+#define LNULL -1
 
-tList createEmptyList();
+typedef int tPosL;
+typedef struct {
+    tItemL data[MAX];
+    tPosL lastPos;
+} tList;
+
+int numUsers(tList list);
+void createEmptyList(tList *list);
 bool isEmptyList(tList list);
 tPosL first(tList list);
 tPosL last(tList list);
-tPosL next(tPosL p, tList list);
-tPosL previous(tPosL p, tList list);
-bool insertItem(tItemL item, tPosL p, tList *list);
-void deleteAtPosition(tPosL p, tList *list);
-tItemL getItem(tPosL p, tList list);
-void updateItem(tItemL item, tPosL p, tList *list);
+tPosL next(tPosL pos, tList list);
+tPosL previous(tPosL pos, tList list);
+bool insertItem(tItemL item, tList *list);
+void deleteAtPosition(tPosL pos, tList *list);
+tItemL getItem(tPosL pos, tList list);
+void updateItem(tItemL item, tPosL pos, tList *list);
 tPosL findItem(tUserName username, tList list);
 
 #endif

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="10.11.28.50" id="11e2949d-b513-46dc-8396-3f24f4c77254" port="22" nameFormat="DESCRIPTIVE" username="x.guitian@udc.es" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="10.11.28.50" id="11e2949d-b513-46dc-8396-3f24f4c77254" port="22" nameFormat="DESCRIPTIVE" username="lucas.marques@udc.es" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="10.11.28.50" id="267028a0-1efd-4f25-8479-b0cd88c6442e" port="22" nameFormat="DESCRIPTIVE" username="x.guitian@udc.es" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

@@ -1,0 +1,138 @@
+********************
+01 N: user user2 category basic
+* New: user user2 category basic
+********************
+02 N: user user3 category basic
+* New: user user3 category basic
+********************
+03 N: user user1 category basic
+* New: user user1 category basic
+********************
+04 S:
+User user1 category basic totalplaytime 0
+No songs
+
+User user2 category basic totalplaytime 0
+No songs
+
+User user3 category basic totalplaytime 0
+No songs
+
+Category  Users  TimePlay  Average
+Basic         3         0     0.00
+Pro           0         0     0.00
+********************
+05 A: user user1 song song3
+* Add: user user1 adds song song3
+********************
+06 A: user user1 song song1
+* Add: user user1 adds song song1
+********************
+07 A: user user1 song song4
+* Add: user user1 adds song song4
+********************
+08 A: user user1 song song2
+* Add: user user1 adds song song2
+********************
+09 A: user user2 song song2
+* Add: user user2 adds song song2
+********************
+10 A: user user2 song song1
+* Add: user user2 adds song song1
+********************
+11 A: user user2 song song3
+* Add: user user2 adds song song3
+********************
+12 A: user user2 song song4
+* Add: user user2 adds song song4
+********************
+13 A: user user3 song song2
+* Add: user user3 adds song song2
+********************
+14 S:
+User user1 category basic totalplaytime 0
+Song song1 playtime 0
+Song song2 playtime 0
+Song song3 playtime 0
+Song song4 playtime 0
+
+User user2 category basic totalplaytime 0
+Song song1 playtime 0
+Song song2 playtime 0
+Song song3 playtime 0
+Song song4 playtime 0
+
+User user3 category basic totalplaytime 0
+Song song2 playtime 0
+
+Category  Users  TimePlay  Average
+Basic         3         0     0.00
+Pro           0         0     0.00
+********************
+15 P: user user1 song song3 minutes 40
+* Play: user user1 plays song song3 playtime 40 totalplaytime 40
+********************
+16 P: user user1 song song4 minutes 30
+* Play: user user1 plays song song4 playtime 30 totalplaytime 70
+********************
+17 P: user user1 song song2 minutes 10
+* Play: user user1 plays song song2 playtime 10 totalplaytime 80
+********************
+18 P: user user2 song song1 minutes 10
+* Play: user user2 plays song song1 playtime 10 totalplaytime 10
+********************
+19 P: user user2 song song3 minutes 20
+* Play: user user2 plays song song3 playtime 20 totalplaytime 30
+********************
+20 P: user user2 song song2 minutes 30
+* Play: user user2 plays song song2 playtime 30 totalplaytime 60
+********************
+21 P: user user2 song song4 minutes 10
+* Play: user user2 plays song song4 playtime 10 totalplaytime 70
+********************
+22 P: user user3 song song2 minutes 100
+* Play: user user3 plays song song2 playtime 100 totalplaytime 100
+********************
+23 S:
+User user1 category basic totalplaytime 80
+Song song1 playtime 0
+Song song2 playtime 10
+Song song3 playtime 40
+Song song4 playtime 30
+
+User user2 category basic totalplaytime 70
+Song song1 playtime 10
+Song song2 playtime 30
+Song song3 playtime 20
+Song song4 playtime 10
+
+User user3 category basic totalplaytime 100
+Song song2 playtime 100
+
+Category  Users  TimePlay  Average
+Basic         3       250    83.33
+Pro           0         0     0.00
+********************
+24 M:
+* ApplyPromo: user user2
+* Promo applied to 1 users
+********************
+25 S:
+User user1 category basic totalplaytime 80
+Song song1 playtime 0
+Song song2 playtime 10
+Song song3 playtime 40
+Song song4 playtime 30
+
+User user2 category basic totalplaytime 0
+Song song1 playtime 10
+Song song2 playtime 30
+Song song3 playtime 20
+Song song4 playtime 10
+
+User user3 category basic totalplaytime 100
+Song song2 playtime 100
+
+Category  Users  TimePlay  Average
+Basic         3       180    60.00
+Pro           0         0     0.00

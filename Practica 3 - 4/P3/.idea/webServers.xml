@@ -3,7 +3,14 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="095b1739-f14a-4bc8-b9d1-6a93296df1d5" name="servidor fic" url="http://10.11.28.50">
-        <fileTransfer rootFolder="/home/UDC/114396/linux" accessType="SFTP" host="10.11.28.50" port="22" sshConfigId="11e2949d-b513-46dc-8396-3f24f4c77254" sshConfig="x.guitian@udc.es@10.11.28.50:22 password">
+        <fileTransfer rootFolder="/home/UDC/114396/linux" accessType="SFTP" host="10.11.28.50" port="22" sshConfigId="11e2949d-b513-46dc-8396-3f24f4c77254" sshConfig="lucas.marques@udc.es@10.11.28.50:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="e099ad16-7850-4488-8af9-636c28596223" name="fic" url="http://10.11.28.50">
+        <fileTransfer rootFolder="/home/UDC/115275/linux" accessType="SFTP" host="10.11.28.50" port="22" sshConfigId="267028a0-1efd-4f25-8479-b0cd88c6442e" sshConfig="x.guitian@udc.es@10.11.28.50:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
