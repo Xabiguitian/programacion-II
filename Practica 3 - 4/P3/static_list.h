@@ -22,17 +22,17 @@ typedef struct {
     tPosL lastPos;
 } tList;
 
-
-void createEmptyList();
+int numUsers(tList list);
+void createEmptyList(tList *list);
 bool isEmptyList(tList list);
 tPosL first(tList list);
 tPosL last(tList list);
-tPosL next(tPosL p, tList list);
-tPosL previous(tPosL p, tList list);
+tPosL next(tPosL pos, tList list);
+tPosL previous(tPosL pos, tList list);
 bool insertItem(tItemL item, tList *list);
-void deleteAtPosition(tPosL p, tList *list);
-tItemL getItem(tPosL p, tList list);
-void updateItem(tItemL item, tPosL p, tList *list);
+void deleteAtPosition(tPosL pos, tList *list);
+tItemL getItem(tPosL pos, tList list);
+void updateItem(tItemL item, tPosL pos, tList *list);
 tPosL findItem(tUserName username, tList list);
 
 #endif
